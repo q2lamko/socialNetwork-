@@ -1,0 +1,9 @@
+.item {
+    color: rgb(27, 219, 85)
+}
+
+.postWrapper {
+    padding: 4px;
+    border-left: 4px solid rgb(172, 171, 171);
+    background: rgb(255, 255, 255);
+}
