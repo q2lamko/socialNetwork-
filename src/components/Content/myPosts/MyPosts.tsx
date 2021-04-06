@@ -1,9 +1,12 @@
 import React from 'react';
 import Post from '../Post/Post';
 import classes from './MyPosts.module.css';
+import {PostsDataType} from "../../Redux/state";
 
-
-const MyPosts = (props) => {
+type PropsType = {
+    PostsData: PostsDataType
+}
+const MyPosts: React.FC<PropsType> = (props) => {
     let postDataMap = props.PostsData.map(p => (<Post message={p.message} id={p.id} likesCount={p.likesCount}/>
     ))
 
@@ -15,7 +18,7 @@ const MyPosts = (props) => {
                     <textarea></textarea>
                 </div>
                 <div>
-                    <button>Добавить</button>
+                    <button onClick={() => {}}>Добавить</button>
                 </div>
             </div>
             <div>
