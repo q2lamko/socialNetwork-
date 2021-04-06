@@ -4,13 +4,14 @@ import cl from './Post.module.css';
 const Post = (props) => {
 
     return (
-        <div >
+        <div>
             <div className={cl.postWrapper}>
-                {props.messege}
+                {props.message}
             </div>
 
             <div>
-                <span>like</span> <div>{props.likesCount}</div>
+                <span>like</span>
+                <div>{props.likesCount}</div>
             </div>
         </div>
     )
