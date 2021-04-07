@@ -1,10 +1,12 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
-    background-image: linear-gradient(60deg, #628cb3 10%, #3c6388 50%, #1a3349 100%);
+    /*background-image: linear-gradient(60deg, #628cb3 10%, #3c6388 50%, #1a3349 100%);*/
 }
 
-.dialogItems {}
+.dialogItems {
+    font-size: 10px;
+}
 
 .dialogItem {
     padding: 10px;
@@ -12,6 +14,8 @@
     text-shadow: 2px 2px 2px rgb(95, 233, 252), 0 0 0px rgb(79, 194, 214);
 }
 
-.messages {}
+.messages {
+    font-size: 1px;
+}
 
 .message {}

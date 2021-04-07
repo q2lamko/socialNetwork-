@@ -1,7 +1,18 @@
 .item {
-    color: rgb(27, 219, 85)
+    color: orangered;
 }
 
 .PostWrapper {
-    padding: 10px;
+    padding: 0px 200px 0px 10px;
+    font-size: 10px;
+    background-color: orange;
+}
+
+.textarea {
+    padding: 2px ;
+}
+
+.addPost {
+    margin-bottom: 10px;
+    padding: 1px;
 }

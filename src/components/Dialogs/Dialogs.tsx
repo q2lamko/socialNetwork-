@@ -6,6 +6,7 @@ import {DialogsPageType} from "../Redux/state";
 
 type PropsType = {
     dialogsPage: DialogsPageType
+
 }
 
 const Dialogs: React.FC<PropsType> = (props) => {

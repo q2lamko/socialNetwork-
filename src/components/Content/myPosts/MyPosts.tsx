@@ -1,24 +1,39 @@
 import React from 'react';
 import Post from '../Post/Post';
 import classes from './MyPosts.module.css';
-import {PostsDataType} from "../../Redux/state";
+import {PostsDataType, ProfilePageType} from "../../Redux/state";
 
 type PropsType = {
-    PostsData: PostsDataType
+    profilePage: ProfilePageType
+    addPost: (postMessage: string) => void
+    changeNewText: (newText: string) => void
 }
+
+
 const MyPosts: React.FC<PropsType> = (props) => {
-    let postDataMap = props.PostsData.map(p => (<Post message={p.message} id={p.id} likesCount={p.likesCount}/>
+    let postDataMap = props.profilePage.PostsData.map(p => (<Post message={p.message} id={p.id} likesCount={p.likesCount}/>
     ))
+
+
+    let addPost = () => {
+            props.addPost(props.profilePage.newPostText)
+    }
 
     return (
         <div className={classes.PostWrapper}>
-            <h3>post</h3>
+            <h2>post</h2>
             <div>
                 <div>
-                    <textarea></textarea>
+                    <textarea
+                        className={classes.textarea}
+
+                        onChange={(e) => {props.changeNewText(e.currentTarget.value)}}
+                        value={props.profilePage.newPostText}
+
+                    ></textarea>
                 </div>
                 <div>
-                    <button onClick={() => {}}>Добавить</button>
+                    <button className={classes.addPost} onClick={addPost}>Добавить</button>
                 </div>
             </div>
             <div>
