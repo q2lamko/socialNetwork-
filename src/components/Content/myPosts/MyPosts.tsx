@@ -11,12 +11,13 @@ type PropsType = {
 
 
 const MyPosts: React.FC<PropsType> = (props) => {
-    let postDataMap = props.profilePage.PostsData.map(p => (<Post message={p.message} id={p.id} likesCount={p.likesCount}/>
+    let postDataMap = props.profilePage.PostsData.map(p => (
+        <Post message={p.message} id={p.id} likesCount={p.likesCount}/>
     ))
 
 
     let addPost = () => {
-            props.addPost(props.profilePage.newPostText)
+        props.addPost(props.profilePage.newPostText)
     }
 
     return (
@@ -24,16 +25,14 @@ const MyPosts: React.FC<PropsType> = (props) => {
             <h2>post</h2>
             <div>
                 <div>
-                    <textarea
-                        className={classes.textarea}
-
-                        onChange={(e) => {props.changeNewText(e.currentTarget.value)}}
-                        value={props.profilePage.newPostText}
-
-                    ></textarea>
+                    <textarea className={classes.textarea}
+                              onChange={e => props.changeNewText(e.currentTarget.value)}
+                              value={props.profilePage.newPostText} />
                 </div>
                 <div>
-                    <button className={classes.addPost} onClick={addPost}>Добавить</button>
+                    <button className={classes.addPost}
+                            onClick={addPost}>
+                            Добавить</button>
                 </div>
             </div>
             <div>

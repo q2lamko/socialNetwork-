@@ -1,4 +1,6 @@
-import {rerenderEntireTree} from "../../render";
+let rerenderEntireTree = () => {
+    console.log("123")
+}
 
 export type MessageType = {
     id: number
@@ -64,7 +66,7 @@ let state: StateType = {
 }
 
 
-export let addPost = (postMessage: string) => {
+export const addPost = (postMessage: string) => {
     debugger;
     const newPost: PostType = {
         id: new Date().getTime(),
@@ -73,12 +75,16 @@ export let addPost = (postMessage: string) => {
     };
 
     state.ProfilePage.PostsData.push(newPost)
-    rerenderEntireTree(state);
+    rerenderEntireTree();
 }
 
 export const changeNewText = (newText: string) => {
     state.ProfilePage.newPostText = newText;
-    rerenderEntireTree(state);
+    rerenderEntireTree();
+}
+
+export const subsrcibe = (observer: () => void) => {
+    rerenderEntireTree = observer
 }
 
 export default state;

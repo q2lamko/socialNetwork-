@@ -21,8 +21,8 @@ const App: React.FC<PropsType> = (props) => {
     return (
 
         <div className='app-wrapper'>
-            {/*<Header/>*/}
-            {/*  <Navbar/>*/}
+            <Header/>
+            <Navbar/>
             <div className='app-wrapper-content'>
                 <Route path='/profile' component={() =>
                     <Profile
@@ -31,9 +31,9 @@ const App: React.FC<PropsType> = (props) => {
                         changeNewText={props.changeNewText}
                     />}/>
                 <Route path='/dialogs' component={() => <Dialogs dialogsPage={props.state.DialogsPage}/>}/>
-                {/*                <Route path='/news' component={() => <News/>}/>
+                <Route path='/news' component={() => <News/>}/>
                 <Route path='/music' component={() => <Music/>}/>
-                <Route path='/settings' component={() => <Settings/>}/>*/}
+                <Route path='/settings' component={() => <Settings/>}/>
             </div>
         </div>
 
