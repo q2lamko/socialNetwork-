@@ -5,17 +5,18 @@
 }
 
 .dialogItems {
-    font-size: 10px;
+    font-size: 20px;
 }
 
 .dialogItem {
     padding: 10px;
     color: rgb(18, 180, 209);
     text-shadow: 2px 2px 2px rgb(95, 233, 252), 0 0 0px rgb(79, 194, 214);
+    font-size: 30px;
 }
 
 .messages {
-    font-size: 1px;
+    font-size: 30px;
 }
 
 .message {}

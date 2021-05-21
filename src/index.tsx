@@ -1,10 +1,9 @@
 import React from 'react';
 import './index.css';
-import state, {subsrcibe} from './components/Redux/state';
+import store  from './components/Redux/state';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {addPost, changeNewText, StateType} from './components/Redux/state';
 import {BrowserRouter} from "react-router-dom";
 
 
@@ -13,9 +12,7 @@ export const rerenderEntireTree = () => {
         <React.StrictMode>
             <BrowserRouter>
                 <App
-                    state={state}
-                    addPost={addPost}
-                    changeNewText={changeNewText}
+                    store={store}
 
                 /></BrowserRouter>
 
@@ -25,7 +22,8 @@ export const rerenderEntireTree = () => {
 }
 
 
-rerenderEntireTree();
 
-subsrcibe(rerenderEntireTree);
+
+store.subscribe(rerenderEntireTree);
+rerenderEntireTree();
 reportWebVitals();
