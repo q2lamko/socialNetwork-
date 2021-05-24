@@ -27,7 +27,11 @@ const App: React.FC<PropsType> = (props) => {
                             profilePage={props.store._state.ProfilePage}
                             dispatch={props.store.dispatch.bind(props.store)}
                         />}/>
-                    <Route path='/dialogs' render={() => <Dialogs dialogsPage={props.store._state.DialogsPage}/>}/>
+                    <Route path='/dialogs' render={() => <Dialogs
+                        store={props.store}
+                        dispatch={props.store.dispatch.bind(props.store)}
+                        // dialogsPage={props.store._state.DialogsPage}
+                    />}/>
                     <Route path='/navigation' render={() => <Navbar/>}/>
                     {/*<Route path='/music' component={() => <Music/>}/>*/}
                     {/*<Route path='/settings' component={() => <Settings/>}/>*/}
