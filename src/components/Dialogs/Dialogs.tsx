@@ -19,7 +19,6 @@ type PropsType = {
 }
 
 const Dialogs: React.FC<PropsType> = (props) => {
-
     let state = props.store.getState().DialogsPage
 
     let DialogsDataMap =

@@ -15,6 +15,7 @@ type PropsType = {
 
 
 const MyPosts: React.FC<PropsType> = (props) => {
+
     let postDataMap = props.profilePage.PostsData.map(p => (
         <Post message={p.message} id={p.id} likesCount={p.likesCount}/>
     ))

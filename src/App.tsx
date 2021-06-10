@@ -15,6 +15,7 @@ type PropsType = {
 
 const App: React.FC<PropsType> = (props) => {
     const state = props.store.getState()
+    console.log(state)
 
     return (
 
@@ -24,7 +25,7 @@ const App: React.FC<PropsType> = (props) => {
                 <div className='app-wrapper-content'>
                     <Route path='/profile' render={() =>
                         <Profile
-                            profilePage={props.store._state.ProfilePage}
+                            profilePage={state.ProfilePage}
                             dispatch={props.store.dispatch.bind(props.store)}
                         />}/>
                     <Route path='/dialogs' render={() => <Dialogs
