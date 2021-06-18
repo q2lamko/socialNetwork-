@@ -9,49 +9,36 @@ import {
 
 type PropsType = {
     profilePage: ProfilePageType
-    dispatch: (action: ActionsTypes) => void
+    newTextChangeHandler: (e: ChangeEvent<HTMLTextAreaElement>) => void
+    addPost: () => void
+    postDataMap: JSX.Element[]
 
 }
 
 
-const MyPosts: React.FC<PropsType> = (props) => {
-
-    let postDataMap = props.profilePage.PostsData.map(p => (
-        <Post message={p.message} id={p.id} likesCount={p.likesCount}/>
-    ))
-
-
-    let addPost = () => {
-        // props.dispatch({type: "ADD-POST", postMessage: props.profilePage.newPostText})
-        props.dispatch(addPostActionCreator(props.profilePage.newPostText))
-    }
-
-    let newTextChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch(newTextChangeActionCreator(e.currentTarget.value))
-    }
-
-    return (
+const MyPosts: React.FC<PropsType> = (props) =>
+     (
         <div className={classes.PostWrapper}>
             <h2>post</h2>
             <div>
                 <div>
                     <textarea className={classes.textarea}
-                              onChange={newTextChangeHandler}
+                              onChange={props.newTextChangeHandler}
                               value={props.profilePage.newPostText}/>
                 </div>
                 <div>
                     <button className={classes.addPost}
-                            onClick={addPost}>
+                            onClick={props.addPost}>
                         Добавить
                     </button>
                 </div>
             </div>
             <div>
-                {postDataMap}
+                {props.postDataMap}
             </div>
 
         </div>
     )
-}
+
 
 export default MyPosts;
