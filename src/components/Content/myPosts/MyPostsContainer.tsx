@@ -4,13 +4,14 @@ import classes from './MyPosts.module.css';
 import {
     ActionsTypes,
     addPostActionCreator, newTextChangeActionCreator,
-    ProfilePageType, StateType, StoreType
+    ProfilePageType, StateType
 } from "../../Redux/state";
 import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
-import {AppStateType} from "../../Redux/redux-store";
+import {AppStateType, StoreType} from "../../Redux/redux-store";
 
 type PropsType = {
+
     store: StoreType
 }
 

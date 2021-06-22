@@ -2,11 +2,11 @@ import React from 'react';
 import './App.css';
 import Profile from './components/Content/Profile'
 import Dialogs from "./components/Dialogs/Dialogs";
-import {StoreType} from "./components/Redux/state";
+
 import {BrowserRouter, Route} from 'react-router-dom';
 import Navbar from "./components/Navbar/Navbar";
 import Header from "./components/Header/Header";
-import store from "./components/Redux/redux-store";
+import store, {StoreType} from "./components/Redux/redux-store";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import SuperDialogsContainer from "./components/Dialogs/DialogsContainer";
 
@@ -16,8 +16,8 @@ type PropsType = {
 
 }
 
-const App: React.FC<PropsType> = (props) => {
-    const state = props.store.getState()
+const App = () => {
+    const state = store.getState()
     console.log(state)
 
     return (
@@ -34,7 +34,7 @@ const App: React.FC<PropsType> = (props) => {
                     />}/>
                 <Route path='/dialogs' render={() =>
                     <SuperDialogsContainer
-                        store={props.store}
+                        store={store}
                         // dispatch={props.store.dispatch.bind(props.store)}
                         // dialogsPage={props.store._state.DialogsPage}
                     />}/>

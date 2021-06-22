@@ -1,17 +1,13 @@
-import classes from "./Dialogs.module.css";
 import React, {ChangeEvent} from "react";
-import DialogItem from "./DialogsItem/DialogsItem";
-import Message from "./Message/Message";
 import {
-    ActionsTypes,
-    DialogsPageType,
     newMessageBodyActionCreator,
-    sendMessageBodyActionCreator, StateType,
-    StoreType
+    sendMessageBodyActionCreator,
 } from "../Redux/state";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
-import {AppStateType} from "../Redux/redux-store";
+import {AppStateType, StoreType} from "../Redux/redux-store";
+import {InitialStateType} from "../Redux/dialogs-reducer";
+import {Dispatch} from "redux";
 
 type PropsType = {
     store: StoreType
@@ -38,21 +34,49 @@ type PropsType = {
 //     )
 // }
 
-let mapStateToProps = (state: AppStateType) => {
+export type DialogsPageType = {
+    messagesData: Array<MessageType>
+    DialogsData: Array<DialogDataType>
+    newMessageBody: string
+
+}
+
+export type DialogDataType = {
+    id: number
+    name: string
+}
+export type MessageType = {
+    id: number
+    message: string
+}
+
+type MapStatePropsType = {
+    DialogsPage: InitialStateType
+}
+
+type MapDispatchPropsType = {
+    onSendMessageClick:()=> void,
+    onNewMessageChange:(e: ChangeEvent<HTMLTextAreaElement>) => void,
+}
+
+let mapStateToProps = (state: AppStateType):MapStatePropsType => {
     return {
-        DialogsPage: state.DialogsPage
+        DialogsPage: state.DialogsPage,
+
     }
 }
-let mapDispatchToProps = (dispatch: any) => {
+let mapDispatchToProps = (dispatch: Dispatch):MapDispatchPropsType => {
     return {
         onSendMessageClick: () => {
             dispatch(sendMessageBodyActionCreator())
         },
-        onNewMessageChange: (e: ChangeEvent<HTMLTextAreaElement>) => {
+        onNewMessageChange: (e) => {
             dispatch(newMessageBodyActionCreator(e.target.value))
         }
     }
 }
+
+export type DialogsPropsType = MapDispatchPropsType & MapStatePropsType
 
 export const SuperDialogsContainer: React.FC<PropsType> = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 

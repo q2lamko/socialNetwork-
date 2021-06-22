@@ -1,9 +1,9 @@
 import React from 'react';
-import MyPosts from './myPosts/MyPosts';
+
 import ProfileInfo from './ProfileInfo/ProfileInfo';
-import {ActionsTypes, ProfilePageType, StoreType} from "../Redux/state";
+
 import MyPostsContainer from "./myPosts/MyPostsContainer";
-import store from "../Redux/redux-store";
+import store, {StoreType} from "../Redux/redux-store";
 
 
 type PropsType = {
@@ -12,7 +12,7 @@ type PropsType = {
     store: StoreType
 }
 
-const Profile: React.FC<PropsType>= (props) => {
+const Profile: React.FC<PropsType> = (props) => {
 
     return (
         <div>

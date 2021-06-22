@@ -1,6 +1,6 @@
-import {ActionsTypes, DialogsPageType, StateType} from "./state";
+import {ActionsTypes} from "./state";
 
-type InitialStateType = typeof initialState
+export type InitialStateType = typeof initialState
 
 let initialState = {
     messagesData: [
@@ -19,7 +19,7 @@ let initialState = {
     newMessageBody: "",
 }
 
-export const dialogsReducer = (state: InitialStateType = initialState, action: ActionsTypes) => {
+export const dialogsReducer = (state: InitialStateType = initialState, action: ActionsTypes):InitialStateType => {
 
 
     switch (action.type) {

@@ -1,15 +1,15 @@
 import {profileReducer} from "./profile-reducer";
 import {dialogsReducer} from "./dialogs-reducer";
 
-export type StoreType = {
-    _state: StateType
-    _rerenderEntireTree: () => void
-    subscribe: (observer: () => void) => void
-    getState: () => StateType
-    dispatch: (action: ActionsTypes) => void
-    // addPost:(postMessage: string)=> void
-    // changeNewText:(newPost: string) => void
-}
+//  type StoreType = {
+//     _state: StateType
+//     _rerenderEntireTree: () => void
+//     subscribe: (observer: () => void) => void
+//     getState: () => StateType
+//     dispatch: (action: ActionsTypes) => void
+//     // addPost:(postMessage: string)=> void
+//     // changeNewText:(newPost: string) => void
+// }
 //
 // type AddPostActionType = {
 //     type: "ADD-POST",
@@ -134,12 +134,12 @@ export const sendMessageBodyActionCreator = () => {
 //         // }
 //     }
 // }
-export type MessageType = {
+ type MessageType = {
     id: number
     message: string
 }
 
-export type DialogsPageType = {
+ type DialogsPageType = {
     messagesData: Array<MessageType>
     DialogsData: Array<DialogDataType>
     newMessageBody: string
@@ -147,7 +147,7 @@ export type DialogsPageType = {
 
 }
 
-export type DialogDataType = {
+ type DialogDataType = {
     id: number
     name: string
 }
