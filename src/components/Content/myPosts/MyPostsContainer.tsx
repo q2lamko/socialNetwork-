@@ -1,19 +1,12 @@
 import React, {ChangeEvent} from 'react';
 import Post from '../Post/Post';
-import classes from './MyPosts.module.css';
+
 import {
-    ActionsTypes,
-    addPostActionCreator, newTextChangeActionCreator,
-    ProfilePageType, StateType
+    addPostActionCreator, newMessageBodyActionCreator, newTextChangeActionCreator,
 } from "../../Redux/state";
 import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
-import {AppStateType, StoreType} from "../../Redux/redux-store";
-
-type PropsType = {
-
-    store: StoreType
-}
+import {AppStateType} from "../../Redux/redux-store";
 
 
 // const MyPostsContainer: React.FC<PropsType> = (props) => {
@@ -43,8 +36,8 @@ type PropsType = {
 // }
 
 type MapDispatchToPropsType = {
-    addPost: ()=> void
-    newTextChangeHandler:(e: ChangeEvent<HTMLTextAreaElement>)=>void
+    addPost: () => void
+    newTextChangeHandler: (text: string) => void
 }
 
 let MapStateToProps = (state: AppStateType) => {
@@ -54,17 +47,17 @@ let MapStateToProps = (state: AppStateType) => {
         profilePage: state.ProfilePage,
     }
 }
-let MapDispatchToProps = (dispatch:any):MapDispatchToPropsType => {
+let MapDispatchToProps = (dispatch: any): MapDispatchToPropsType => {
     return {
         addPost: () => {
-            dispatch(addPostActionCreator(dispatch.addPost()))
+            dispatch(addPostActionCreator())
         },
-        newTextChangeHandler:(e) => {
-            dispatch(newTextChangeActionCreator(e.currentTarget.value))
+        newTextChangeHandler: (text) => {
+            dispatch(newTextChangeActionCreator(text))
         }
     }
 }
 
-export const SuperMyPostsContainer: React.FC<PropsType> = connect(MapStateToProps,MapDispatchToProps)(MyPosts);
+export const SuperMyPostsContainer = connect(MapStateToProps, MapDispatchToProps)(MyPosts);
 
 export default SuperMyPostsContainer;

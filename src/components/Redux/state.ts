@@ -23,10 +23,9 @@ export type ActionsTypes =
     | ReturnType<typeof newMessageBodyActionCreator>
     | ReturnType<typeof sendMessageBodyActionCreator>
 
-export const addPostActionCreator = (postMessage: string) => {
+export const addPostActionCreator = () => {
     return {
-        type: "ADD-POST",
-        postMessage: postMessage
+        type: "ADD-POST"
     } as const
 }
 

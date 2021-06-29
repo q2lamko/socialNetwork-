@@ -5,13 +5,10 @@ import {
 } from "../Redux/state";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
-import {AppStateType, StoreType} from "../Redux/redux-store";
+import {AppStateType} from "../Redux/redux-store";
 import {InitialStateType} from "../Redux/dialogs-reducer";
 import {Dispatch} from "redux";
 
-type PropsType = {
-    store: StoreType
-}
 
 // const DialogsContainer: React.FC<PropsType> = (props) => {
 //     let DialogsPage = props.store.getState().DialogsPage
@@ -55,17 +52,17 @@ type MapStatePropsType = {
 }
 
 type MapDispatchPropsType = {
-    onSendMessageClick:()=> void,
-    onNewMessageChange:(e: ChangeEvent<HTMLTextAreaElement>) => void,
+    onSendMessageClick: () => void,
+    onNewMessageChange: (e: ChangeEvent<HTMLTextAreaElement>) => void,
 }
 
-let mapStateToProps = (state: AppStateType):MapStatePropsType => {
+let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         DialogsPage: state.DialogsPage,
 
     }
 }
-let mapDispatchToProps = (dispatch: Dispatch):MapDispatchPropsType => {
+let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
     return {
         onSendMessageClick: () => {
             dispatch(sendMessageBodyActionCreator())
@@ -78,6 +75,6 @@ let mapDispatchToProps = (dispatch: Dispatch):MapDispatchPropsType => {
 
 export type DialogsPropsType = MapDispatchPropsType & MapStatePropsType
 
-export const SuperDialogsContainer: React.FC<PropsType> = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+export const SuperDialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
 export default SuperDialogsContainer;

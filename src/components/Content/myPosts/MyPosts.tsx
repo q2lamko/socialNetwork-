@@ -9,21 +9,24 @@ import {
 
 type PropsType = {
     profilePage: ProfilePageType
-    newTextChangeHandler: (e: ChangeEvent<HTMLTextAreaElement>) => void
+    newTextChangeHandler: (text: string) => void
     addPost: () => void
     postDataMap: JSX.Element[]
 
 }
 
 
-const MyPosts: React.FC<PropsType> = (props) =>
-     (
+const MyPosts: React.FC<PropsType> = (props) => {
+    const onChangeText = (e:  React.ChangeEvent<HTMLTextAreaElement>) => {
+        props.newTextChangeHandler(e.currentTarget.value)
+    }
+    return (
         <div className={classes.PostWrapper}>
             <h2>post</h2>
             <div>
                 <div>
                     <textarea className={classes.textarea}
-                              onChange={props.newTextChangeHandler}
+                              onChange={onChangeText}
                               value={props.profilePage.newPostText}/>
                 </div>
                 <div>
@@ -39,6 +42,7 @@ const MyPosts: React.FC<PropsType> = (props) =>
 
         </div>
     )
+}
 
 
 export default MyPosts;

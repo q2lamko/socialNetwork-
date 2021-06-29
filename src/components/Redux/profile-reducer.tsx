@@ -12,21 +12,19 @@ let initialState = {
     ],
 }
 
-export const profileReducer = (state: InitialStateType = initialState, action: ActionsTypes):InitialStateType => {
+export const profileReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
 
     switch (action.type) {
         case "ADD-POST":
-            const newPost: PostType = {
-                id: new Date().getTime(),
-                message: action.postMessage,
-                likesCount: 0,
-            };
-
-            state.PostsData.push(newPost)
-            break;
+            return {
+                ...state,
+                PostsData: [...state.PostsData, {
+                    id: new Date().getTime(),
+                    likesCount: 0,
+                    message: state.newPostText}]
+            }
         case "UPDATE-NEW-POST-TEXT":
-            state.newPostText = action.newPost;
-            break;
+            return {...state, newPostText: action.newPost}
     }
 
     return state

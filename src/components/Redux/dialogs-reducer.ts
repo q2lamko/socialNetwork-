@@ -24,8 +24,7 @@ export const dialogsReducer = (state: InitialStateType = initialState, action: A
 
     switch (action.type) {
         case "UPDATE-NEW-MESSAGE-BODY":
-            state.newMessageBody = action.body
-            break;
+            return {...state, newMessageBody: action.body}
         case "SEND-MESSAGE":
             let body = state.newMessageBody;
             state.newMessageBody = "";
