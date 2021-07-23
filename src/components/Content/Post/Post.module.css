@@ -4,6 +4,21 @@
 
 .postWrapper {
     padding: 4px;
-    border-left: 4px solid rgb(172, 171, 171);
     background: rgb(255, 255, 255);
+    margin-top: 15px;
+    border: 2px teal solid;
+    display:block;
+
+}
+
+.like {
+    border: 1px teal solid;
+    background: #ffffff;
+
+}
+
+.PostContainer {
+    border: 2px white solid;
+    display: flex;
+    justify-content: revert;
 }

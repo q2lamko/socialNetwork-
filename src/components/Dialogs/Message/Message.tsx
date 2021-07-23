@@ -13,12 +13,12 @@ const Message: React.FC<MessageType> = (props) => {
     return (
         <div className={s.message}>
             {props.message}
-            <div>
-                <textarea ref={newPostElement}></textarea>
-            </div>
-            <div>
-                <button onClick={addPost}>Добавить</button>
-            </div>
+            {/*<div>*/}
+            {/*    <textarea ref={newPostElement}></textarea>*/}
+            {/*</div>*/}
+            {/*<div>*/}
+            {/*    <button onClick={addPost}>Добавить</button>*/}
+            {/*</div>*/}
         </div>
     )
 }

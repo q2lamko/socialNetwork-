@@ -1,6 +1,3 @@
-import {profileReducer} from "./profile-reducer";
-import {dialogsReducer} from "./dialogs-reducer";
-
 //  type StoreType = {
 //     _state: StateType
 //     _rerenderEntireTree: () => void
@@ -17,38 +14,14 @@ import {dialogsReducer} from "./dialogs-reducer";
 // }
 
 
+import {addPostActionCreator, newTextChangeActionCreator} from "./profile-reducer";
+import {newMessageBodyActionCreator, sendMessageBodyActionCreator} from "./dialogs-reducer";
+
 export type ActionsTypes =
-      ReturnType<typeof addPostActionCreator>
+    ReturnType<typeof addPostActionCreator>
     | ReturnType<typeof newTextChangeActionCreator>
     | ReturnType<typeof newMessageBodyActionCreator>
     | ReturnType<typeof sendMessageBodyActionCreator>
-
-export const addPostActionCreator = () => {
-    return {
-        type: "ADD-POST"
-    } as const
-}
-
-export const newTextChangeActionCreator = (newPost: string) => {
-    return {
-        type: "UPDATE-NEW-POST-TEXT",
-        newPost: newPost
-    } as const
-
-}
-export const newMessageBodyActionCreator = (body: string) => {
-    return {
-        type: "UPDATE-NEW-MESSAGE-BODY",
-        body: body
-    } as const
-}
-
-export const sendMessageBodyActionCreator = () => {
-    return {
-        type: "SEND-MESSAGE",
-
-    } as const
-}
 
 
 // let store: StoreType = {
@@ -133,20 +106,18 @@ export const sendMessageBodyActionCreator = () => {
 //         // }
 //     }
 // }
- type MessageType = {
+type MessageType = {
     id: number
     message: string
 }
 
- type DialogsPageType = {
+type DialogsPageType = {
     messagesData: Array<MessageType>
     DialogsData: Array<DialogDataType>
     newMessageBody: string
-
-
 }
 
- type DialogDataType = {
+type DialogDataType = {
     id: number
     name: string
 }
@@ -155,7 +126,6 @@ export type PostType = {
     message: string
     id: number
     likesCount: number
-
 }
 
 export type PostsDataType = Array<PostType>

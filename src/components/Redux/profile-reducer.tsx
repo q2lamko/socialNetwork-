@@ -1,4 +1,4 @@
-import {ActionsTypes, PostType, ProfilePageType, StateType} from "./state";
+import {ActionsTypes} from "./state";
 
 
 type InitialStateType = typeof initialState
@@ -21,12 +21,28 @@ export const profileReducer = (state: InitialStateType = initialState, action: A
                 PostsData: [...state.PostsData, {
                     id: new Date().getTime(),
                     likesCount: 0,
-                    message: state.newPostText}]
+                    message: state.newPostText}],
+                newPostText:"",
             }
+
         case "UPDATE-NEW-POST-TEXT":
             return {...state, newPostText: action.newPost}
     }
 
     return state
 }
+const ADD_POST = 'ADD-POST'
+export const addPostActionCreator = () => {
+    return {
+        type: ADD_POST
+    } as const
+}
 
+const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
+
+export const newTextChangeActionCreator = (newPost: string) => {
+    return {
+        type: UPDATE_NEW_POST_TEXT,
+        newPost: newPost
+    } as const
+}

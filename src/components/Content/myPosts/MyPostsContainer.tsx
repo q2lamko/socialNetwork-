@@ -1,12 +1,9 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import Post from '../Post/Post';
-
-import {
-    addPostActionCreator, newMessageBodyActionCreator, newTextChangeActionCreator,
-} from "../../Redux/state";
 import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
 import {AppStateType} from "../../Redux/redux-store";
+import {addPostActionCreator, newTextChangeActionCreator} from "../../Redux/profile-reducer";
 
 
 // const MyPostsContainer: React.FC<PropsType> = (props) => {
@@ -29,7 +26,7 @@ import {AppStateType} from "../../Redux/redux-store";
 //         <MyPosts
 //             newTextChangeHandler={newTextChangeHandler}
 //             addPost={addPost}
-//             postDataMap={postDataMap}
+//             postDosataMap={ptDataMap}
 //             profilePage={props.store.getState().ProfilePage}
 //         />
 //     )
@@ -40,14 +37,15 @@ type MapDispatchToPropsType = {
     newTextChangeHandler: (text: string) => void
 }
 
-let MapStateToProps = (state: AppStateType) => {
+const MapStateToProps = (state: AppStateType) => {
     return {
         postDataMap: state.ProfilePage.PostsData.map(p => (
             <Post message={p.message} id={p.id} likesCount={p.likesCount}/>)),
         profilePage: state.ProfilePage,
     }
 }
-let MapDispatchToProps = (dispatch: any): MapDispatchToPropsType => {
+
+const MapDispatchToProps = (dispatch: any): MapDispatchToPropsType => {
     return {
         addPost: () => {
             dispatch(addPostActionCreator())

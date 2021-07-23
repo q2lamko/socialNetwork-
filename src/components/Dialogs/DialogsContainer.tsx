@@ -1,12 +1,9 @@
-import React, {ChangeEvent} from "react";
-import {
-    newMessageBodyActionCreator,
-    sendMessageBodyActionCreator,
-} from "../Redux/state";
+import {ChangeEvent} from "react";
+
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {AppStateType} from "../Redux/redux-store";
-import {InitialStateType} from "../Redux/dialogs-reducer";
+import {InitialStateType, newMessageBodyActionCreator, sendMessageBodyActionCreator} from "../Redux/dialogs-reducer";
 import {Dispatch} from "redux";
 
 
@@ -31,12 +28,11 @@ import {Dispatch} from "redux";
 //     )
 // }
 
-export type DialogsPageType = {
-    messagesData: Array<MessageType>
-    DialogsData: Array<DialogDataType>
-    newMessageBody: string
-
-}
+// export type DialogsPageType = {
+//     messagesData: Array<MessageType>
+//     DialogsData: Array<DialogDataType>
+//     newMessageBody: string
+// }
 
 export type DialogDataType = {
     id: number

@@ -7,13 +7,13 @@ type PropsType = PostType;
 const Post: React.FC<PropsType> = (props) => {
 
     return (
-        <div>
+        <div className={cl.PostContainer}>
             <div className={cl.postWrapper}>
                 {props.message}
             </div>
 
             <div>
-                <span>like</span>
+                <span className={cl.like}>like</span>
                 <div>{props.likesCount}</div>
             </div>
         </div>

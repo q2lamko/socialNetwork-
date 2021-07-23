@@ -19,7 +19,7 @@ const Music = () => {
 const n = 123476;
 const arr = n.toString(10).split('').map(Number);
 arr.sort(( a, b ) =>  b - a);  
-console.log(arr);
+
 
 const number = '50$'
 
