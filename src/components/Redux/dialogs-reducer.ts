@@ -18,7 +18,7 @@ let initialState = {
     newMessageBody: "",
 }
 
-export const dialogsReducer = (state: InitialStateType = initialState, action: ActionsTypes):InitialStateType => {
+export const dialogsReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
 
 
     switch (action.type) {
@@ -27,9 +27,9 @@ export const dialogsReducer = (state: InitialStateType = initialState, action: A
         case "SEND-MESSAGE":
             let body = state.newMessageBody;
             return {...state, newMessageBody: '', messagesData: [...state.messagesData, {id: 6, message: body}]}
-            // state.messagesData.push({id: 6, message: body})
-            // // state.newMessageBody = "";
-            // break;
+        // state.messagesData.push({id: 6, message: body})
+        // // state.newMessageBody = "";
+        // break;
     }
 
     return state

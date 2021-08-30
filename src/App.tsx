@@ -6,11 +6,13 @@ import Navbar from "./components/Navbar/Navbar";
 import Header from "./components/Header/Header";
 import store from "./components/Redux/redux-store";
 import SuperDialogsContainer from "./components/Dialogs/DialogsContainer";
+import Users from "./components/Users/Users";
+import UsersContainer from "./components/Users/UsersContainer";
 
 
 const App = () => {
     const state = store.getState()
-    console.log(state)
+
 
     return (
 
@@ -22,6 +24,9 @@ const App = () => {
                        render={() => <Profile/>}/>
                 <Route path='/dialogs'
                        render={() => <SuperDialogsContainer/>}/>
+                <Route path='/users'
+                       render={() => <UsersContainer/>}/>
+
                 <Route path='/navigation' render={() => <Navbar/>}/>
                 {/*<Route path='/music' component={() => <Music/>}/>*/}
                 {/*<Route path='/settings' component={() => <Settings/>}/>*/}

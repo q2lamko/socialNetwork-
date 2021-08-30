@@ -16,12 +16,16 @@
 
 import {addPostActionCreator, newTextChangeActionCreator} from "./profile-reducer";
 import {newMessageBodyActionCreator, sendMessageBodyActionCreator} from "./dialogs-reducer";
+import {followAC, setUsersAC, unfollowAC,} from "./users-reducer";
 
 export type ActionsTypes =
     ReturnType<typeof addPostActionCreator>
     | ReturnType<typeof newTextChangeActionCreator>
     | ReturnType<typeof newMessageBodyActionCreator>
     | ReturnType<typeof sendMessageBodyActionCreator>
+    | ReturnType<typeof followAC>
+    | ReturnType<typeof unfollowAC>
+    | ReturnType<typeof setUsersAC>
 
 
 // let store: StoreType = {
@@ -138,7 +142,22 @@ export type ProfilePageType = {
 export type StateType = {
     ProfilePage: ProfilePageType
     DialogsPage: DialogsPageType
+    UsersPage: UsersPageType
 }
 
+export type UsersPageType = Array<UserType>
+
+export type UserType = {
+    id: string
+    followed: boolean
+    fullName: string
+    status: string
+    location: LocationType
+}
+
+export type LocationType = {
+    country: string
+    city: string
+}
 
 export default 15;
