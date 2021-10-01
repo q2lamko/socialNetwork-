@@ -1,5 +1,21 @@
 import {ActionsTypes} from "./state";
 
+type MessageType = {
+    id: number
+    message: string
+}
+
+export type DialogsPageType = {
+    messagesData: Array<MessageType>
+    DialogsData: Array<DialogDataType>
+    newMessageBody: string
+}
+
+type DialogDataType = {
+    id: number
+    name: string
+}
+
 export type InitialStateType = typeof initialState
 
 let initialState = {

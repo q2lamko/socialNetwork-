@@ -4,6 +4,24 @@ const FOLLOW = "FOLLOW"
 const UNFOLLOW = 'UNFOLLLOW'
 const SET_USERS = 'SET_USERS'
 
+
+
+export type UsersPageType = {
+    users: Array<UserType>
+}
+export type UserType = {
+    id: string
+    followed: boolean
+    fullName: string
+    status: string
+    location: LocationType
+}
+
+export type LocationType = {
+    country: string
+    city: string
+}
+
 export type InitialStateType = typeof initialState
 
 let initialState = {
@@ -67,7 +85,7 @@ export const usersReducer = (state: InitialStateType = initialState, action: Act
             }
         case SET_USERS:
             return {
-                ...state, users: [...state.users, ...action.users]
+                ...state, users: {...state.users, ...action.users}
             }
         default:
             return state
@@ -87,7 +105,7 @@ export const unfollowAC = (userId: number) => {
     } as const
 }
 
-export const setUsersAC = (users: Array<any>) => {
+export const setUsersAC = (users: UsersPageType) => {
     return {
         type: SET_USERS, users
     } as const

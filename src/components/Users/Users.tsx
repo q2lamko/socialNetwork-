@@ -1,9 +1,31 @@
 import React from 'react';
-import {UserType} from "../Redux/state";
 
-let Users = (props: any) => {
+import {UsersPropsType} from "./UsersContainer";
+
+
+let Users: React.FC<UsersPropsType> = (props) => {
     return (
-        <div>new users</div>
+        <div>
+            {
+                props.usersPage.users.map(u => <div key={u.id}>
+                <span>
+                    <div><img src="" alt=""/></div>
+                    <div><button>FOLLOW</button></div>
+                </span>
+                    <span>
+                    <span>
+                        <div>{u.fullName}</div>
+                        <div>{u.status}</div>
+                    </span>
+                    <span>
+                        <div>{u.location.country}</div>
+                        <div>{u.location.city}</div>
+
+                    </span>
+                </span>
+                </div>)
+            }
+        </div>
     )
 }
 

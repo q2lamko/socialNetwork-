@@ -4,6 +4,7 @@ import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
 import {AppStateType} from "../../Redux/redux-store";
 import {addPostActionCreator, newTextChangeActionCreator} from "../../Redux/profile-reducer";
+import {Dispatch} from "redux";
 
 
 // const MyPostsContainer: React.FC<PropsType> = (props) => {
@@ -45,7 +46,7 @@ const MapStateToProps = (state: AppStateType) => {
     }
 }
 
-const MapDispatchToProps = (dispatch: any): MapDispatchToPropsType => {
+const MapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
     return {
         addPost: () => {
             dispatch(addPostActionCreator())

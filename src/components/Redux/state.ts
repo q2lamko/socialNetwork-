@@ -14,9 +14,9 @@
 // }
 
 
-import {addPostActionCreator, newTextChangeActionCreator} from "./profile-reducer";
-import {newMessageBodyActionCreator, sendMessageBodyActionCreator} from "./dialogs-reducer";
-import {followAC, setUsersAC, unfollowAC,} from "./users-reducer";
+import {addPostActionCreator, newTextChangeActionCreator, ProfilePageType} from "./profile-reducer";
+import {DialogsPageType, newMessageBodyActionCreator, sendMessageBodyActionCreator} from "./dialogs-reducer";
+import {followAC, setUsersAC, unfollowAC, UsersPageType,} from "./users-reducer";
 
 export type ActionsTypes =
     ReturnType<typeof addPostActionCreator>
@@ -110,34 +110,9 @@ export type ActionsTypes =
 //         // }
 //     }
 // }
-type MessageType = {
-    id: number
-    message: string
-}
 
-type DialogsPageType = {
-    messagesData: Array<MessageType>
-    DialogsData: Array<DialogDataType>
-    newMessageBody: string
-}
 
-type DialogDataType = {
-    id: number
-    name: string
-}
 
-export type PostType = {
-    message: string
-    id: number
-    likesCount: number
-}
-
-export type PostsDataType = Array<PostType>
-
-export type ProfilePageType = {
-    PostsData: PostsDataType
-    newPostText: string
-}
 
 export type StateType = {
     ProfilePage: ProfilePageType
@@ -145,19 +120,6 @@ export type StateType = {
     UsersPage: UsersPageType
 }
 
-export type UsersPageType = Array<UserType>
 
-export type UserType = {
-    id: string
-    followed: boolean
-    fullName: string
-    status: string
-    location: LocationType
-}
-
-export type LocationType = {
-    country: string
-    city: string
-}
 
 export default 15;

@@ -1,5 +1,17 @@
 import {ActionsTypes} from "./state";
 
+export type PostType = {
+    message: string
+    id: number
+    likesCount: number
+}
+
+export type PostsDataType = Array<PostType>
+
+export type ProfilePageType = {
+    PostsData: PostsDataType
+    newPostText: string
+}
 
 type InitialStateType = typeof initialState
 
