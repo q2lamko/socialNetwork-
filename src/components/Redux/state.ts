@@ -16,7 +16,7 @@
 
 import {addPostActionCreator, newTextChangeActionCreator, ProfilePageType} from "./profile-reducer";
 import {DialogsPageType, newMessageBodyActionCreator, sendMessageBodyActionCreator} from "./dialogs-reducer";
-import {followAC, setUsersAC, unfollowAC, UsersPageType,} from "./users-reducer";
+import {followAC, setUsersAC, unfollowAC,} from "./users-reducer";
 
 export type ActionsTypes =
     ReturnType<typeof addPostActionCreator>
@@ -114,11 +114,11 @@ export type ActionsTypes =
 
 
 
-export type StateType = {
-    ProfilePage: ProfilePageType
-    DialogsPage: DialogsPageType
-    UsersPage: UsersPageType
-}
+// export type StateType = {
+//     ProfilePage: ProfilePageType
+//     DialogsPage: DialogsPageType
+//     // UsersPage: Array<UserType>
+// }
 
 
 

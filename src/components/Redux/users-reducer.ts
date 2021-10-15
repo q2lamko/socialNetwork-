@@ -5,12 +5,12 @@ const UNFOLLOW = 'UNFOLLLOW'
 const SET_USERS = 'SET_USERS'
 
 
-
-export type UsersPageType = {
-    users: Array<UserType>
-}
+// export type UsersPageType = {
+//     users: Array<UserType>
+// }
 export type UserType = {
-    id: string
+    photoUrl: string
+    id: number
     followed: boolean
     fullName: string
     status: string
@@ -22,19 +22,24 @@ export type LocationType = {
     city: string
 }
 
-export type InitialStateType = typeof initialState
+ // type InitialStateType = typeof initialState
+export type InitialStateType = {
+    users: Array<UserType>
+}
 
-let initialState = {
+let initialState: InitialStateType= {
     users: [
         {
             id: 1,
-            followed: true,
+            photoUrl: "https://www.soyuz.ru/public/uploads/files/2/7450855/20201113195712abead384a5.jpg",
+            followed: false,
             fullName: 'Konstantin',
             status: 'learn react',
             location: {country: 'Russia', city: 'Novosibirsk'}
         },
         {
             id: 2,
+            photoUrl: "https://www.soyuz.ru/public/uploads/files/2/7450855/20201113195712abead384a5.jpg",
             followed: true,
             fullName: 'Maxim',
             status: 'work react',
@@ -42,6 +47,7 @@ let initialState = {
         },
         {
             id: 3,
+            photoUrl: "https://www.soyuz.ru/public/uploads/files/2/7450855/20201113195712abead384a5.jpg",
             followed: true,
             fullName: 'Lena',
             status: 'work cook',
@@ -49,6 +55,7 @@ let initialState = {
         },
         {
             id: 4,
+            photoUrl: "https://www.soyuz.ru/public/uploads/files/2/7450855/20201113195712abead384a5.jpg",
             followed: false,
             fullName: 'Kosha',
             status: 'doing myav',
@@ -105,7 +112,7 @@ export const unfollowAC = (userId: number) => {
     } as const
 }
 
-export const setUsersAC = (users: UsersPageType) => {
+export const setUsersAC = (users: Array<UserType>) => {
     return {
         type: SET_USERS, users
     } as const
