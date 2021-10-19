@@ -9,12 +9,18 @@ const SET_USERS = 'SET_USERS'
 //     users: Array<UserType>
 // }
 export type UserType = {
-    photoUrl: string
+
     id: number
     followed: boolean
-    fullName: string
+
+
+
+    name: string
+    photos: {small: string, large: string}
+    large: string
+    small: string
     status: string
-    location: LocationType
+    uniqueUrlName: string
 }
 
 export type LocationType = {
@@ -29,38 +35,38 @@ export type InitialStateType = {
 
 let initialState: InitialStateType= {
     users: [
-        {
-            id: 1,
-            photoUrl: "https://www.soyuz.ru/public/uploads/files/2/7450855/20201113195712abead384a5.jpg",
-            followed: false,
-            fullName: 'Konstantin',
-            status: 'learn react',
-            location: {country: 'Russia', city: 'Novosibirsk'}
-        },
-        {
-            id: 2,
-            photoUrl: "https://www.soyuz.ru/public/uploads/files/2/7450855/20201113195712abead384a5.jpg",
-            followed: true,
-            fullName: 'Maxim',
-            status: 'work react',
-            location: {country: 'Russia', city: 'Novosibirsk'}
-        },
-        {
-            id: 3,
-            photoUrl: "https://www.soyuz.ru/public/uploads/files/2/7450855/20201113195712abead384a5.jpg",
-            followed: true,
-            fullName: 'Lena',
-            status: 'work cook',
-            location: {country: 'Russia', city: 'Novosibirsk'}
-        },
-        {
-            id: 4,
-            photoUrl: "https://www.soyuz.ru/public/uploads/files/2/7450855/20201113195712abead384a5.jpg",
-            followed: false,
-            fullName: 'Kosha',
-            status: 'doing myav',
-            location: {country: 'Russia', city: 'Novosibirsk'}
-        },
+        // {
+        //     id: 1,
+        //     photoUrl: "https://www.soyuz.ru/public/uploads/files/2/7450855/20201113195712abead384a5.jpg",
+        //     followed: false,
+        //     fullName: 'Konstantin',
+        //     status: 'learn react',
+        //     location: {country: 'Russia', city: 'Novosibirsk'}
+        // },
+        // {
+        //     id: 2,
+        //     photoUrl: "https://www.soyuz.ru/public/uploads/files/2/7450855/20201113195712abead384a5.jpg",
+        //     followed: true,
+        //     fullName: 'Maxim',
+        //     status: 'work react',
+        //     location: {country: 'Russia', city: 'Novosibirsk'}
+        // },
+        // {
+        //     id: 3,
+        //     photoUrl: "https://www.soyuz.ru/public/uploads/files/2/7450855/20201113195712abead384a5.jpg",
+        //     followed: true,
+        //     fullName: 'Lena',
+        //     status: 'work cook',
+        //     location: {country: 'Russia', city: 'Novosibirsk'}
+        // },
+        // {
+        //     id: 4,
+        //     photoUrl: "https://www.soyuz.ru/public/uploads/files/2/7450855/20201113195712abead384a5.jpg",
+        //     followed: false,
+        //     fullName: 'Kosha',
+        //     status: 'doing myav',
+        //     location: {country: 'Russia', city: 'Novosibirsk'}
+        // },
     ]
 }
 
@@ -91,8 +97,9 @@ export const usersReducer = (state: InitialStateType = initialState, action: Act
                 })
             }
         case SET_USERS:
+            console.log(action.users)
             return {
-                ...state, users: {...state.users, ...action.users}
+                ...state, users: [...state.users, ...action.users]
             }
         default:
             return state
