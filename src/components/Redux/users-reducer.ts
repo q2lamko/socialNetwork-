@@ -9,14 +9,10 @@ const SET_USERS = 'SET_USERS'
 //     users: Array<UserType>
 // }
 export type UserType = {
-
     id: number
     followed: boolean
-
-
-
     name: string
-    photos: {small: string, large: string}
+    photos: { small: string, large: string }
     large: string
     small: string
     status: string
@@ -28,12 +24,12 @@ export type LocationType = {
     city: string
 }
 
- // type InitialStateType = typeof initialState
+// type InitialStateType = typeof initialState
 export type InitialStateType = {
     users: Array<UserType>
 }
 
-let initialState: InitialStateType= {
+let initialState: InitialStateType = {
     users: [
         // {
         //     id: 1,

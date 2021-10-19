@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './users.module.css';
+import userAvatar from "../../assets/img/userPhoto.jpg"
 
 import {UsersPropsType} from "./UsersContainer";
 import axios from "axios";
@@ -13,25 +14,27 @@ type ResponseType = {
 
 let Users: React.FC<UsersPropsType> = (props) => {
 
-    if (props.usersPage.users.length === 0) {
+    let getUsers = () => {
 
-        axios.get<ResponseType>("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-        let a = response.data.items
-            console.log(a)
-            props.setUsers(a)
-        })
+        if (props.usersPage.users.length === 0) {
+
+            axios.get<ResponseType>("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+                let a = response.data.items
+                console.log(a)
+                props.setUsers(a)
+            })
+        }
     }
-
     return (
-
         <div>
+            <button onClick={getUsers} >GET USERS</button>
 
             {
                 props.usersPage.users.map(u => <div key={u.id}>
 
                   <span>
                     <div>
-                        <img src={u.photos.small} className={styles.photo} alt={''}/>
+                        <img src={u.photos.small != null ? u.photos.small : userAvatar} className={styles.photo} alt={''}/>
                     </div>
                     <div>
                         {u.followed
