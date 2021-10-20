@@ -8,9 +8,12 @@ import {followAC, InitialStateType, setUsersAC, unfollowAC, UserType} from "../R
 import {AppStateType} from "../Redux/redux-store";
 
 
-type MapStateToPropsType = {
-    usersPage: InitialStateType
-}
+type MapStateToPropsType = InitialStateType
+    // users: Array<UserType>
+    // pageSize: number
+    // totalUsersCount: number
+    // currentPage: number
+
 
 type MapDispatchToPropsType = {
     follow: (userId: number) => void
@@ -20,7 +23,10 @@ type MapDispatchToPropsType = {
 
 let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
-        usersPage: state.UsersPage
+        users: state.UsersPage.users,
+        pageSize: state.UsersPage.pageSize,
+        totalUsersCount: state.UsersPage.totalUsersCount,
+        currentPage: state.UsersPage.currentPage
     }
 }
 

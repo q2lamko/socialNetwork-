@@ -27,43 +27,16 @@ export type LocationType = {
 // type InitialStateType = typeof initialState
 export type InitialStateType = {
     users: Array<UserType>
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
 }
 
 let initialState: InitialStateType = {
-    users: [
-        // {
-        //     id: 1,
-        //     photoUrl: "https://www.soyuz.ru/public/uploads/files/2/7450855/20201113195712abead384a5.jpg",
-        //     followed: false,
-        //     fullName: 'Konstantin',
-        //     status: 'learn react',
-        //     location: {country: 'Russia', city: 'Novosibirsk'}
-        // },
-        // {
-        //     id: 2,
-        //     photoUrl: "https://www.soyuz.ru/public/uploads/files/2/7450855/20201113195712abead384a5.jpg",
-        //     followed: true,
-        //     fullName: 'Maxim',
-        //     status: 'work react',
-        //     location: {country: 'Russia', city: 'Novosibirsk'}
-        // },
-        // {
-        //     id: 3,
-        //     photoUrl: "https://www.soyuz.ru/public/uploads/files/2/7450855/20201113195712abead384a5.jpg",
-        //     followed: true,
-        //     fullName: 'Lena',
-        //     status: 'work cook',
-        //     location: {country: 'Russia', city: 'Novosibirsk'}
-        // },
-        // {
-        //     id: 4,
-        //     photoUrl: "https://www.soyuz.ru/public/uploads/files/2/7450855/20201113195712abead384a5.jpg",
-        //     followed: false,
-        //     fullName: 'Kosha',
-        //     status: 'doing myav',
-        //     location: {country: 'Russia', city: 'Novosibirsk'}
-        // },
-    ]
+    users: [],
+    pageSize: 5,
+    totalUsersCount: 20,
+    currentPage: 2
 }
 
 

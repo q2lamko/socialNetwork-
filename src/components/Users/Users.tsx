@@ -16,7 +16,7 @@ let Users: React.FC<UsersPropsType> = (props) => {
 
     let getUsers = () => {
 
-        if (props.usersPage.users.length === 0) {
+        if (props.users.length === 0) {
 
             axios.get<ResponseType>("https://social-network.samuraijs.com/api/1.0/users").then(response => {
                 let a = response.data.items
@@ -30,7 +30,7 @@ let Users: React.FC<UsersPropsType> = (props) => {
             <button onClick={getUsers} >GET USERS</button>
 
             {
-                props.usersPage.users.map(u => <div key={u.id}>
+                props.users.map(u => <div key={u.id}>
 
                   <span>
                     <div>

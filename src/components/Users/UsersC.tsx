@@ -22,7 +22,6 @@ class Users extends React.Component<UsersPropsType> {
     componentDidMount() {
         axios.get<ResponseType>("https://social-network.samuraijs.com/api/1.0/users").then(response => {
             let a = response.data.items
-            console.log(a)
             this.props.setUsers(a)
         })
     }
@@ -40,12 +39,24 @@ class Users extends React.Component<UsersPropsType> {
     // }
 
     render() {
+
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+        let pages = [];
+        for (let i = 1; i <= pagesCount; i ++) {
+            pages.push(i)
+        }
+
         return (
             <div>
-                {/*<button onClick={this.getUsers} >GET USERS</button>*/}
+                <div>
+                    {pages.map(p => {
+                        return <span className={this.props.currentPage === p ? styles.selectedPage : ''}>{p}</span>
+                    })}
 
+
+                </div>
                 {
-                    this.props.usersPage.users.map(u => <div key={u.id}>
+                    this.props.users.map(u => <div key={u.id}>
 
                   <span>
                     <div>
@@ -64,7 +75,8 @@ class Users extends React.Component<UsersPropsType> {
                 </span>
                         <span>
                     <span>
-                        <div>{u.name}</div>
+                        <div>NAME: {u.name}</div>
+                        <div>ID : {u.id}</div>
                         <div>{u.status}</div>
                     </span>
 
