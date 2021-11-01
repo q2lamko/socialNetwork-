@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Header from "./components/Header/Header";
 import store from "./components/Redux/redux-store";
 import SuperDialogsContainer from "./components/Dialogs/DialogsContainer";
-import Users from "./components/Users/Users";
+import UsersComponent from "./components/Users/UsersComponent";
 import UsersContainer from "./components/Users/UsersContainer";
 
 
