@@ -22,6 +22,7 @@ let initialState = {
         {message: 'my second post on this page', id: 2, likesCount: 3},
         {message: 'this is realy hardcore ', id: 3, likesCount: 3}
     ],
+    profile:null
 }
 
 export const profileReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
@@ -33,20 +34,34 @@ export const profileReducer = (state: InitialStateType = initialState, action: A
                 PostsData: [...state.PostsData, {
                     id: new Date().getTime(),
                     likesCount: 0,
-                    message: state.newPostText}],
-                newPostText:"",
+                    message: state.newPostText
+                }],
+                newPostText: "",
             }
 
         case "UPDATE-NEW-POST-TEXT":
             return {...state, newPostText: action.newPost}
+        case "SET_USER_PROFILE":
+            return {
+                ...state, profile: action.profile
+            }
     }
 
     return state
 }
 const ADD_POST = 'ADD-POST'
+
 export const addPostActionCreator = () => {
     return {
         type: ADD_POST
+    } as const
+}
+
+const SET_USER_PROFILE = "SET_USER_PROFILE"
+
+export const setUserProfile = (profile: any) => {
+    return {
+        type: SET_USER_PROFILE, profile
     } as const
 }
 

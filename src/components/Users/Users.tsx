@@ -2,6 +2,9 @@ import React from 'react';
 import styles from "./users.module.css";
 import userAvatar from "../../assets/img/userPhoto.jpg";
 import {UsersPropsType} from "./UsersContainer";
+import ninkasukaa from "../Navbar/Navbar";
+import Navbar from "../Navbar/Navbar";
+import {NavLink} from 'react-router-dom';
 
 type UserType = {
     onPageChanged: (currentPage: number) => void
@@ -31,8 +34,10 @@ let Users: React.FC<OverUsersType> = (props) => {
 
                   <span>
                     <div>
+                        <NavLink to={'/profile' + u.id}>
                         <img src={u.photos.small != null ? u.photos.small : userAvatar} className={styles.photo}
                              alt={''}/>
+                        </NavLink>
                     </div>
                     <div>
                         {u.followed

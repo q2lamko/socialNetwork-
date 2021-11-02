@@ -14,28 +14,29 @@
 // }
 
 
-import {addPostActionCreator, newTextChangeActionCreator} from "./profile-reducer";
+import {addPostActionCreator, newTextChangeActionCreator, setUserProfile} from "./profile-reducer";
 import {newMessageBodyActionCreator, sendMessageBodyActionCreator} from "./dialogs-reducer";
 import {
-    followAC,
-    setCurrentPageAC,
-    setToggleIsFetchingAC,
-    setTotalUsersCountAC,
-    setUsersAC,
-    unfollowAC,
+    follow,
+    setCurrentPage,
+    setToggleIsFetching,
+    setTotalUsersCount,
+    setUsers,
+    unfollow,
 } from "./users-reducer";
 
 export type ActionsTypes =
     ReturnType<typeof addPostActionCreator>
+    | ReturnType<typeof setUserProfile>
     | ReturnType<typeof newTextChangeActionCreator>
     | ReturnType<typeof newMessageBodyActionCreator>
     | ReturnType<typeof sendMessageBodyActionCreator>
-    | ReturnType<typeof followAC>
-    | ReturnType<typeof unfollowAC>
-    | ReturnType<typeof setUsersAC>
-    | ReturnType<typeof setCurrentPageAC>
-|ReturnType<typeof setTotalUsersCountAC>
-| ReturnType<typeof setToggleIsFetchingAC>
+    | ReturnType<typeof follow>
+    | ReturnType<typeof unfollow>
+    | ReturnType<typeof setUsers>
+    | ReturnType<typeof setCurrentPage>
+|ReturnType<typeof setTotalUsersCount>
+| ReturnType<typeof setToggleIsFetching>
 
 
 // let store: StoreType = {
