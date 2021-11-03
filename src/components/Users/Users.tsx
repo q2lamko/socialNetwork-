@@ -2,8 +2,6 @@ import React from 'react';
 import styles from "./users.module.css";
 import userAvatar from "../../assets/img/userPhoto.jpg";
 import {UsersPropsType} from "./UsersContainer";
-import ninkasukaa from "../Navbar/Navbar";
-import Navbar from "../Navbar/Navbar";
 import {NavLink} from 'react-router-dom';
 
 type UserType = {
@@ -12,13 +10,11 @@ type UserType = {
 type OverUsersType = UsersPropsType & UserType;
 
 let Users: React.FC<OverUsersType> = (props) => {
-
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
-
     return <div>
         <div>
             {pages.map(p => {
@@ -31,7 +27,6 @@ let Users: React.FC<OverUsersType> = (props) => {
         </div>
         {
             props.users.map(u => <div key={u.id}>
-
                   <span>
                     <div>
                         <NavLink to={'/profile' + u.id}>
@@ -55,7 +50,6 @@ let Users: React.FC<OverUsersType> = (props) => {
                         <div>ID : {u.id}</div>
                         <div>{u.status}</div>
                     </span>
-
                 </span>
             </div>)
         }

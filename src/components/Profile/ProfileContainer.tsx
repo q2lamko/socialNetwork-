@@ -1,12 +1,10 @@
 import React from 'react';
 import Profile from "./Profile";
 import axios from "axios";
-import {InitialStateType, UserType} from "../Redux/users-reducer";
+import {UserType} from "../Redux/users-reducer";
 import {connect} from "react-redux";
 import {AppStateType} from "../Redux/redux-store";
-
-import {setUserProfile} from "../Redux/profile-reducer";
-
+import {InitialStateType, setUserProfile} from "../Redux/profile-reducer";
 
 type ResponseType = {
     error: string
@@ -14,21 +12,20 @@ type ResponseType = {
     totalCount: number
 }
 
-class ProfileContainer extends React.Component <UsersPropsType> {
+class ProfileContainer extends React.Component <ProfilePropsType> {
 
     componentDidMount() {
         axios.get<ResponseType>(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(response => {
             let a = response.data.items
             this.props.setUserProfile(response.data.items);
-
         })
-
     }
-
     render() {
         return (
             <Profile
-                {...this.props}/>
+                {...this.props}
+                profile={this.props.profile}
+            />
         )
     }
 }
@@ -37,9 +34,11 @@ type mapDispatchToPropsType = {
     setUserProfile: (profile: any) => void
 }
 
-type mapStateToPropsType = InitialStateType
-let mapStateToProps = (state: any) => ({})
+type mapStateToPropsType = any
+let mapStateToProps = (state: AppStateType) => ({
+    profile: state.profilePage.profile
+})
 
-type  UsersPropsType = mapDispatchToPropsType
+export type  ProfilePropsType = mapDispatchToPropsType &mapStateToPropsType
 let DispatchObject: mapDispatchToPropsType = {setUserProfile}
 export default connect(mapStateToProps, DispatchObject)(ProfileContainer);

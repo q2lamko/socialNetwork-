@@ -1,6 +1,8 @@
 import React from 'react';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPostsContainer from "./myPosts/MyPostsContainer";
+import {UsersPropsType} from "../Users/UsersContainer";
+import {ProfilePropsType} from "./ProfileContainer";
 
 
 //
@@ -9,8 +11,13 @@ import MyPostsContainer from "./myPosts/MyPostsContainer";
 //     // dispatch:(action: ActionsTypes)=> void
 //     store: StoreType
 // }
+type ProfileType = {
+    profile: any
+}
 
-const Profile: React.FC = (props) => {
+type OverProfileType = ProfilePropsType & ProfileType;
+
+const Profile: React.FC<OverProfileType> = (props) => {
 
     return (
         <div>

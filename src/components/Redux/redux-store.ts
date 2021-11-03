@@ -8,11 +8,12 @@ export type AppStateType = ReturnType<typeof rootReducer>
 
 let rootReducer = combineReducers(
     {
-        ProfilePage: profileReducer,
+        profilePage: profileReducer,
         DialogsPage: dialogsReducer,
         UsersPage: usersReducer
     })
 let store = createStore(rootReducer);
+
 
 
 export default store;

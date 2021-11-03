@@ -1,28 +1,16 @@
 import React from "react";
 import {connect} from "react-redux";
-import {Dispatch} from "redux";
-import {
-    follow,
-    InitialStateType,
-    setCurrentPage, setToggleIsFetching,
-    setTotalUsersCount,
-    setUsers,
-    unfollow,
-    UserType
-} from "../Redux/users-reducer";
+import {follow,InitialStateType,setCurrentPage, setToggleIsFetching,setTotalUsersCount,setUsers,unfollow,UserType} from "../Redux/users-reducer";
 import {AppStateType} from "../Redux/redux-store";
 import axios from "axios";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
-
 
 type MapStateToPropsType = InitialStateType
 // users: Array<UserType>
 // pageSize: number
 // totalUsersCount: number
 // currentPage: number
-
-
 type MapDispatchToPropsType = {
     follow: (userId: number) => void
     unfollow: (userId: number) => void
@@ -31,13 +19,11 @@ type MapDispatchToPropsType = {
     setTotalUsersCount: (totalCount: number) => void
     setToggleIsFetching: (isFetching: boolean) => void
 }
-
 type ResponseType = {
     error: string
     items: Array<UserType>
     totalCount: number
 }
-
 
 class UsersContainer extends React.Component<UsersPropsType> {
 
@@ -50,7 +36,6 @@ class UsersContainer extends React.Component<UsersPropsType> {
             this.props.setTotalUsersCount(response.data.totalCount)
         })
     }
-
     onPageChanged = (currentPage: number) => {
         this.props.setToggleIsFetching(true)
         this.props.setCurrentPage(currentPage);
@@ -60,14 +45,12 @@ class UsersContainer extends React.Component<UsersPropsType> {
             this.props.setUsers(a)
         })
     }
-
     render() {
         return (
             <>
                 {this.props.isFetching ?
                     <Preloader/>
                     : null}
-
                 <Users
                     totalUsersCount={this.props.totalUsersCount}
                     currentPage={this.props.currentPage}
@@ -96,7 +79,6 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
         isFetching: state.UsersPage.isFetching,
     }
 }
-
 // let mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
 //     return {
 //         follow: (userId) => {
@@ -120,7 +102,6 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 //         }
 //     }
 // }
-
 let DispatchObject : MapDispatchToPropsType= {
     follow,
     unfollow,
@@ -130,7 +111,6 @@ let DispatchObject : MapDispatchToPropsType= {
     setToggleIsFetching,
 }
 export type  UsersPropsType = MapDispatchToPropsType & MapStateToPropsType
-
 // export const UserContainer = connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
 export const UserContainer = connect(mapStateToProps, DispatchObject)(UsersContainer);
 export default UserContainer;

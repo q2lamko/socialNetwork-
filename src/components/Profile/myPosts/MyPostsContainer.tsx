@@ -40,9 +40,9 @@ type MapDispatchToPropsType = {
 
 const MapStateToProps = (state: AppStateType) => {
     return {
-        postDataMap: state.ProfilePage.PostsData.map(p => (
+        postDataMap: state.profilePage.PostsData.map(p => (
             <Post message={p.message} id={p.id} likesCount={p.likesCount}/>)),
-        profilePage: state.ProfilePage,
+        profilePage: state.profilePage,
     }
 }
 
