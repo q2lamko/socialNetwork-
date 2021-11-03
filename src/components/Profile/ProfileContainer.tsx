@@ -20,9 +20,14 @@ class ProfileContainer extends React.Component <ProfilePropsType> {
             this.props.setUserProfile(response.data.items);
         })
     }
+
+
+
+
     render() {
         return (
             <Profile
+
                 {...this.props}
                 profile={this.props.profile}
             />
@@ -39,6 +44,6 @@ let mapStateToProps = (state: AppStateType) => ({
     profile: state.profilePage.profile
 })
 
-export type  ProfilePropsType = mapDispatchToPropsType &mapStateToPropsType
+export type  ProfilePropsType = mapDispatchToPropsType & mapStateToPropsType
 let DispatchObject: mapDispatchToPropsType = {setUserProfile}
 export default connect(mapStateToProps, DispatchObject)(ProfileContainer);
