@@ -1,6 +1,15 @@
 import React from "react";
 import {connect} from "react-redux";
-import {follow,InitialStateType,setCurrentPage, setToggleIsFetching,setTotalUsersCount,setUsers,unfollow,UserType} from "../Redux/users-reducer";
+import {
+    follow,
+    InitialStateType,
+    setCurrentPage,
+    setToggleIsFetching,
+    setTotalUsersCount,
+    setUsers,
+    unfollow,
+    UserType
+} from "../Redux/users-reducer";
 import {AppStateType} from "../Redux/redux-store";
 import axios from "axios";
 import Users from "./Users";
@@ -45,6 +54,7 @@ class UsersContainer extends React.Component<UsersPropsType> {
             this.props.setUsers(a)
         })
     }
+
     render() {
         return (
             <>
@@ -102,7 +112,7 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 //         }
 //     }
 // }
-let DispatchObject : MapDispatchToPropsType= {
+let DispatchObject: MapDispatchToPropsType = {
     follow,
     unfollow,
     setUsers,

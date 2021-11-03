@@ -16,6 +16,9 @@ export type UserType = {
     small: string
     status: string
     uniqueUrlName: string
+    contacts: { facebook:string, vk: string, twitter: string, instagram: string }
+    aboutMe: string
+
 }
 export type LocationType = {
     country: string

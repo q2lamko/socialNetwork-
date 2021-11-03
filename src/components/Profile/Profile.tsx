@@ -3,6 +3,7 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPostsContainer from "./myPosts/MyPostsContainer";
 import {UsersPropsType} from "../Users/UsersContainer";
 import {ProfilePropsType} from "./ProfileContainer";
+import {UserType} from "../Redux/users-reducer";
 
 
 //
@@ -12,7 +13,7 @@ import {ProfilePropsType} from "./ProfileContainer";
 //     store: StoreType
 // }
 type ProfileType = {
-    profile: any
+    profile: UserType
 }
 
 type OverProfileType = ProfilePropsType & ProfileType;

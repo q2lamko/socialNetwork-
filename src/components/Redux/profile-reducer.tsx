@@ -1,4 +1,5 @@
 import {ActionsTypes} from "./state";
+import {UserType} from "./users-reducer";
 
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
@@ -13,10 +14,10 @@ export type PostsDataType = Array<PostType>
 export type ProfilePageType = {
     PostsData: PostsDataType
     newPostText: string
+
 }
 
 export type InitialStateType = typeof initialState
-
 let initialState = {
     newPostText: 'it-kamaz',
     PostsData: [
@@ -28,7 +29,6 @@ let initialState = {
 }
 
 export const profileReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
-
     switch (action.type) {
         case "ADD-POST":
             return {
@@ -55,7 +55,7 @@ export const addPostActionCreator = () => {
         type: ADD_POST
     } as const
 }
-export const setUserProfile = (profile: any) => {
+export const setUserProfile = (profile: Array<UserType> | any ) => {
     return {
         type: SET_USER_PROFILE, profile
     } as const
