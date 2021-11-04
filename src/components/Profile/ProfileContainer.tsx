@@ -12,22 +12,20 @@ class ProfileContainer extends React.Component <PropsType> {
         axios.get<UserType>(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(response => {
             let a = response.data
             this.props.setUserProfile(a);
-            debugger
         })
     }
-
     render() {
         return (
             <Profile
-                {...this.props}
                 profile={this.props.profile}
+                setUserProfile={this.props.setUserProfile}
             />
         )
     }
 }
 
 type mapDispatchToPropsType = {
-    setUserProfile: (profile: UserType) => void
+    setUserProfile: (profile: UserType ) => void
 }
 type mapStateToPropsType = {
     profile: UserType | null
@@ -44,6 +42,6 @@ type PathParamsType = {
     zopa: string
 }
 type PropsType = RouteComponentProps<PathParamsType> & ProfilePropsType;
-
-withRouter(ProfileContainer);
-export default (connect(mapStateToProps, DispatchObject,)(ProfileContainer));
+//
+let routeredContainer = withRouter(ProfileContainer);
+export default (connect(mapStateToProps, DispatchObject,)(withRouter(ProfileContainer)));
