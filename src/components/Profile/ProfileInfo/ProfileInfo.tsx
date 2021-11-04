@@ -9,10 +9,12 @@ type ProfileInfoProps = {
 }
 
 const ProfileInfo = (props: ProfileInfoProps) => {
+    debugger
   if (!props.profile) {
     return <Preloader/>
   }
     return <div>
+
         <div>
             <img className={classes.img} alt="" src="https://i.playground.ru/p/Va7pSKtxxjf3QRTzLHMbRg.jpeg"/>
         </div>
