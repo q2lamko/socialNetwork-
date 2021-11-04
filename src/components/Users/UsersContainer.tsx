@@ -1,14 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    follow,
-    InitialStateType,
-    setCurrentPage,
-    setToggleIsFetching,
-    setTotalUsersCount,
-    setUsers,
-    unfollow,
-    UserType
+    follow, InitialStateType, setCurrentPage, setToggleIsFetching, setTotalUsersCount, setUsers, unfollow, UserType
 } from "../Redux/users-reducer";
 import {AppStateType} from "../Redux/redux-store";
 import axios from "axios";
@@ -45,6 +38,7 @@ class UsersContainer extends React.Component<UsersPropsType> {
             this.props.setTotalUsersCount(response.data.totalCount)
         })
     }
+
     onPageChanged = (currentPage: number) => {
         this.props.setToggleIsFetching(true)
         this.props.setCurrentPage(currentPage);

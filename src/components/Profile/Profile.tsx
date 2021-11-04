@@ -1,7 +1,6 @@
 import React from 'react';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPostsContainer from "./myPosts/MyPostsContainer";
-import {UsersPropsType} from "../Users/UsersContainer";
 import {ProfilePropsType} from "./ProfileContainer";
 import {UserType} from "../Redux/users-reducer";
 
