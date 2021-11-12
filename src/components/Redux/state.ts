@@ -1,29 +1,17 @@
-//  type StoreType = {
-//     _state: StateType
-//     _rerenderEntireTree: () => void
-//     subscribe: (observer: () => void) => void
-//     getState: () => StateType
-//     dispatch: (action: ActionsTypes) => void
-//     // addPost:(postMessage: string)=> void
-//     // changeNewText:(newPost: string) => void
-// }
-//
-// type AddPostActionType = {
-//     type: "ADD-POST",
-//     postMessage: string
-// }
+
 
 
 import {addPostActionCreator, newTextChangeActionCreator, setUserProfile} from "./profile-reducer";
 import {newMessageBodyActionCreator, sendMessageBodyActionCreator} from "./dialogs-reducer";
 import {
     follow,
-    setCurrentPage,
+    setCurrentPage, setToggleInFollow,
     setToggleIsFetching,
     setTotalUsersCount,
     setUsers,
     unfollow,
 } from "./users-reducer";
+import {setAuthUserData} from "./auth-reducer";
 
 export type ActionsTypes =
     ReturnType<typeof addPostActionCreator>
@@ -35,8 +23,10 @@ export type ActionsTypes =
     | ReturnType<typeof unfollow>
     | ReturnType<typeof setUsers>
     | ReturnType<typeof setCurrentPage>
-|ReturnType<typeof setTotalUsersCount>
-| ReturnType<typeof setToggleIsFetching>
+    | ReturnType<typeof setTotalUsersCount>
+    | ReturnType<typeof setToggleIsFetching>
+    | ReturnType<typeof setAuthUserData>
+    | ReturnType<typeof setToggleInFollow>
 
 
 // let store: StoreType = {

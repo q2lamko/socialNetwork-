@@ -14,11 +14,11 @@ export type PostsDataType = Array<PostType>
 export type ProfilePageType = {
     PostsData: PostsDataType
     newPostText: string
+    profile: UserType | null
 
 }
-
-export type InitialStateType = typeof initialState
-let initialState = {
+export type InitialStateType = ProfilePageType
+let initialState:InitialStateType = {
     newPostText: 'it-kamaz',
     PostsData: [
         {message: 'my first post on this page', id: 1, likesCount: 1},
@@ -55,7 +55,7 @@ export const addPostActionCreator = () => {
         type: ADD_POST
     } as const
 }
-export const setUserProfile = (profile: Array<UserType> | any ) => {
+export const setUserProfile = (profile: UserType ) => {
     return {
         type: SET_USER_PROFILE, profile
     } as const

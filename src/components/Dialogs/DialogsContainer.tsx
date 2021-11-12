@@ -1,5 +1,4 @@
 import {ChangeEvent} from "react";
-
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {AppStateType} from "../Redux/redux-store";
@@ -7,32 +6,6 @@ import {InitialStateType, newMessageBodyActionCreator, sendMessageBodyActionCrea
 import {Dispatch} from "redux";
 
 
-// const DialogsContainer: React.FC<PropsType> = (props) => {
-//     let DialogsPage = props.store.getState().DialogsPage
-//
-//     let onSendMessageClick = () => {
-//         props.store.dispatch(sendMessageBodyActionCreator())
-//     }
-//
-//     let onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-//         let body = e.target.value;
-//         props.store.dispatch(newMessageBodyActionCreator(body))
-//     }
-//
-//     return (
-//         <Dialogs
-//             DialogsPage={DialogsPage}
-//             onSendMessageClick={onSendMessageClick}
-//             onNewMessageChange={onNewMessageChange}
-//         />
-//     )
-// }
-
-// export type DialogsPageType = {
-//     messagesData: Array<MessageType>
-//     DialogsData: Array<DialogDataType>
-//     newMessageBody: string
-// }
 
 export type DialogDataType = {
     id: number
@@ -44,9 +17,8 @@ export type MessageType = {
 }
 
 type MapStatePropsType = {
-    DialogsPage: InitialStateType
+    dialogsPage: InitialStateType
 }
-
 type MapDispatchPropsType = {
     onSendMessageClick: () => void,
     onNewMessageChange: (e: ChangeEvent<HTMLTextAreaElement>) => void,
@@ -54,8 +26,7 @@ type MapDispatchPropsType = {
 
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
-        DialogsPage: state.DialogsPage,
-
+        dialogsPage: state.dialogsPage,
     }
 }
 let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
@@ -72,5 +43,4 @@ let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
 export type DialogsPropsType = MapDispatchPropsType & MapStatePropsType
 
 export const SuperDialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
-
 export default SuperDialogsContainer;

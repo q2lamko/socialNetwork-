@@ -1,4 +1,5 @@
 import {ActionsTypes} from "./state";
+import {usersAPI} from "../../API/API";
 
 const FOLLOW = "FOLLOW"
 const UNFOLLOW = 'UNFOLLLOW'
@@ -6,6 +7,7 @@ const SET_USERS = 'SET_USERS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
+const TOGGLE_FOLLOW_IN_PROGRESS = 'TOGGLE_FOLLOW_IN_PROGRESS'
 
 export type UserType = {
     id: number
@@ -16,7 +18,7 @@ export type UserType = {
     small: string
     status: string
     uniqueUrlName: string
-    contacts: { facebook:string, vk: string, twitter: string, instagram: string }
+    contacts: { facebook: string, vk: string, twitter: string, instagram: string }
     aboutMe: string
 
 }
@@ -24,20 +26,22 @@ export type LocationType = {
     country: string
     city: string
 }
-export type InitialStateType = {
-    users: Array<UserType>
-    pageSize: number
-    totalUsersCount: number
-    currentPage: number
-    isFetching: boolean
-}
+export type InitialStateType = typeof initialState;
+//     users: Array<UserType>
+//     pageSize: number
+//     totalUsersCount: number
+//     currentPage: number
+//     isFetching: boolean
+//     followInProgress: []
+// }
 
-let initialState: InitialStateType = {
-    users: [],
+let initialState = {
+    users: [] as Array<UserType>,
     pageSize: 5,
     totalUsersCount: 1,
     currentPage: 1,
     isFetching: false,
+    followInProgress: []
 }
 
 export const usersReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
@@ -80,6 +84,13 @@ export const usersReducer = (state: InitialStateType = initialState, action: Act
             return {
                 ...state, isFetching: action.isFetching
             }
+        case TOGGLE_FOLLOW_IN_PROGRESS:
+            return {
+                ...state,
+                followInProgress: action.isFetching
+                    ? [...state.followInProgress.filter(id => id !== action.userId)]
+                    : state.followInProgress.filter(id => id !== action.userId)
+            }
         default:
             return state
     }
@@ -115,5 +126,21 @@ export const setToggleIsFetching = (isFetching: boolean) => {
         type: TOGGLE_IS_FETCHING, isFetching
     } as const
 }
+export const setToggleInFollow = (isFetching: boolean, userId: number) => {
+    return {
+        type: TOGGLE_FOLLOW_IN_PROGRESS, isFetching, userId
+    } as const
+}
+
+export const getUsersThunkCreator = (currentPage: number, pageSize: number) => {
+    return (dispatch: any) => {
+        dispatch(setToggleIsFetching(true));
+        usersAPI.getUsers(currentPage, pageSize).then(response => {
+            dispatch(setToggleIsFetching(false));
+            dispatch(setUsers(response.items));
+            dispatch(setTotalUsersCount(response.totalCount));
+        })
 
 
+    }
+}

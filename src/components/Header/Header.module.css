@@ -6,3 +6,6 @@
   width: 4em;
   z-index: auto;
 }
+.loginBlock {
+  float:right
+}

@@ -2,23 +2,22 @@ import React from 'react';
 import './App.css';
 import {Route} from 'react-router-dom';
 import Navbar from "./components/Navbar/Navbar";
-import Header from "./components/Header/Header";
-import store from "./components/Redux/redux-store";
 import SuperDialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 const App = () => {
-    const state = store.getState()
+
     return (
         <div className='app-wrapper'>
             <Navbar/>
-            <Header/>
+            <HeaderContainer/>
             <div className='app-wrapper-content'>
-                <Route path='/profile'
-                       render={() => <ProfileContainer /> }/>
+                <Route path='/profile/:userId'
+                       render={() => <ProfileContainer />}/>
                 <Route path='/dialogs'
-                       render={() => <SuperDialogsContainer/>}/>
+                       render={() => <SuperDialogsContainer />}/>
                 <Route path='/users'
                        render={() => <UsersContainer/>}/>
                 <Route path='/navigation' render={() => <Navbar/>}/>

@@ -2,26 +2,14 @@ import classes from "./Dialogs.module.css";
 import React from "react";
 import DialogItem from "./DialogsItem/DialogsItem";
 import Message from "./Message/Message";
-
 import { DialogsPropsType} from "./DialogsContainer";
 
-// type PropsType = {
-//     DialogsPage: DialogsPageType
-//     onSendMessageClick: () => void
-//     onNewMessageChange: (e: ChangeEvent<HTMLTextAreaElement>) => void
-// }
-
 const SecretDialogs: React.FC<DialogsPropsType> = (props) => {
-
-
     let DialogsDataMap =
-        props.DialogsPage.DialogsData.map(d => <DialogItem name={d.name} key={d.id} id={d.id}/>);
-
+        props.dialogsPage.DialogsData.map(d => <DialogItem name={d.name} key={d.id} id={d.id}/>);
     let MessageDataMap =
-        props.DialogsPage.messagesData.map(m => <Message message={m.message} key={m.id} id={m.id}/>);
-
-    let newMessageBody = props.DialogsPage.newMessageBody
-
+        props.dialogsPage.messagesData.map(m => <Message message={m.message} key={m.id} id={m.id}/>);
+    let newMessageBody = props.dialogsPage.newMessageBody
 
     return (
         <div className={classes.dialogs}>
@@ -46,5 +34,4 @@ const SecretDialogs: React.FC<DialogsPropsType> = (props) => {
 }
 
 const Dialogs = React.memo(SecretDialogs)
-
 export default Dialogs;
