@@ -5,8 +5,6 @@ import {AppStateType} from "../Redux/redux-store";
 import {InitialStateType, newMessageBodyActionCreator, sendMessageBodyActionCreator} from "../Redux/dialogs-reducer";
 import {Dispatch} from "redux";
 
-
-
 export type DialogDataType = {
     id: number
     name: string

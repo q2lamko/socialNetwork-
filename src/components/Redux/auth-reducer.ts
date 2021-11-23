@@ -1,4 +1,7 @@
 import {ActionsTypes} from "./state";
+import {Dispatch} from "redux";
+import {authAPI, usersAPI} from "../../API/API";
+import {setToggleInFollow, unfollowSuccess} from "./users-reducer";
 
 const SET_USER_DATA = "SET_USER_DATA"
 
@@ -39,6 +42,16 @@ export const setAuthUserData = (data: dataType) => {
     } as const
 }
 
+export const auth = () => {
+    return (dispatch: Dispatch) => {
+        authAPI.getAuth().then(response => {
+            if (response.resultCode === 0) {
+                // let {id,login,email} = response.data.data
+                dispatch(setAuthUserData(response.data))
+            }
+        })
+    }
+}
 
 
 

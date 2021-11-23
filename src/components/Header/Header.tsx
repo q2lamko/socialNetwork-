@@ -1,7 +1,11 @@
 import React from 'react';
 import classes from './Header.module.css';
 import {NavLink} from "react-router-dom";
-import {PropsType} from "./HeaderContainer";
+
+type PropsType = {
+    autorisation: boolean
+    login: string
+}
 
 const Header: React.FC<PropsType> = (props) => {
     return (

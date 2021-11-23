@@ -1,17 +1,21 @@
 import React from 'react';
 import styles from "./users.module.css";
 import userAvatar from "../../assets/img/userPhoto.jpg";
-import {UsersPropsType} from "./UsersContainer";
 import {NavLink} from 'react-router-dom';
-import {getFollowAPI} from '../../API/API';
+import {UserType} from "../Redux/users-reducer";
 
-
-type UserType = {
+type newUserType = {
     onPageChanged: (currentPage: number) => void
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
+    followInProgress: Array<number>
+    users: Array<UserType>
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
 }
-type OverUsersType = UsersPropsType & UserType;
 
-let Users: React.FC<OverUsersType> = (props) => {
+let Users: React.FC<newUserType> = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
@@ -40,26 +44,12 @@ let Users: React.FC<OverUsersType> = (props) => {
                         {u.followed
                             ? <button disabled={props.followInProgress.some(id => id === u.id)}
                                       onClick={() => {
-                                          props.setToggleInFollow(true, u.id)
-                                          debugger
-                                          getFollowAPI.getFollow(u).then(response => {
-                                              if (response.data.resultCode === 0) {
-                                                  props.unfollow(u.id)
-                                              }
-                                              props.setToggleInFollow(false, u.id)
-                                          })
                                           props.unfollow(u.id)
                                       }}>UNFOLLOW</button>
 
                             : <button disabled={props.followInProgress.some(id => id === u.id)}
                                       onClick={() => {
-                                          props.setToggleInFollow(true, u.id)
-                                          getFollowAPI.getUnfollow(u).then(response => {
-                                              if (response.data.resultCode === 0) {
-                                                  props.follow(u.id)
-                                              }
-                                              props.setToggleInFollow(false, u.id)
-                                          })
+                                          props.follow(u.id)
                                       }}>FOLLOW</button>}
                     </div>
                 </span>

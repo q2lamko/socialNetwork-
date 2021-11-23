@@ -23,6 +23,12 @@ export const usersAPI = {
     getSingleUser(userId: string) {
         return instance.get<UserType>(`profile/` + userId)
             .then(response => response.data)
+    },
+    unfollow(userId: number) {
+        return instance.delete<getFollowResponseType>(`follow/${userId}`)
+    },
+    follow(userId: number) {
+        return instance.post<getFollowResponseType>(`follow/${userId}`)
     }
 }
 
@@ -34,19 +40,11 @@ export const authAPI = {
     getAuth() {
         return instance.get<getAuthResponseType>(`auth/me`).then(response => response.data)
     }
-
 }
 
 type getFollowResponseType = {
     data: { id: number, login: string, email: string }
     resultCode: number
 }
-export const getFollowAPI = {
-    getFollow(u: UserType) {
-        return instance.delete<getFollowResponseType>(`follow/${u.id}`)
-    },
-    getUnfollow(u: UserType) {
-        return instance.post<getFollowResponseType>(`follow/${u.id}`)
-    }
-}
+
 

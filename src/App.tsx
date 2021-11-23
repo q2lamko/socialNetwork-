@@ -14,15 +14,10 @@ const App = () => {
             <Navbar/>
             <HeaderContainer/>
             <div className='app-wrapper-content'>
-<<<<<<< HEAD
-                <Route path='/profile/:userId'
-                       render={() => <ProfileContainer />}/>
-=======
                 <Route path='/profile/:userId?'
-                       render={() => <ProfileContainer /> }/>
->>>>>>> 3feb48bc7b9d7d9a53eba2c8ed49d75c882e438b
+                       render={() => <ProfileContainer/>}/>
                 <Route path='/dialogs'
-                       render={() => <SuperDialogsContainer />}/>
+                       render={() => <SuperDialogsContainer/>}/>
                 <Route path='/users'
                        render={() => <UsersContainer/>}/>
                 <Route path='/navigation' render={() => <Navbar/>}/>

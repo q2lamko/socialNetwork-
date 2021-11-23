@@ -9,7 +9,7 @@ type ProfileInfoProps = {
 }
 
 const ProfileInfo = (props: ProfileInfoProps) => {
-    debugger
+
   if (!props.profile) {
     return <Preloader/>
   }

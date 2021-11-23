@@ -1,5 +1,7 @@
 import {ActionsTypes} from "./state";
 import {UserType} from "./users-reducer";
+import {Dispatch} from "redux";
+import {usersAPI} from "../../API/API";
 
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
@@ -18,7 +20,7 @@ export type ProfilePageType = {
 
 }
 export type InitialStateType = ProfilePageType
-let initialState:InitialStateType = {
+let initialState: InitialStateType = {
     newPostText: 'it-kamaz',
     PostsData: [
         {message: 'my first post on this page', id: 1, likesCount: 1},
@@ -55,7 +57,7 @@ export const addPostActionCreator = () => {
         type: ADD_POST
     } as const
 }
-export const setUserProfile = (profile: UserType ) => {
+export const setUserProfile = (profile: UserType) => {
     return {
         type: SET_USER_PROFILE, profile
     } as const
@@ -65,4 +67,16 @@ export const newTextChangeActionCreator = (newPost: string) => {
         type: UPDATE_NEW_POST_TEXT,
         newPost: newPost
     } as const
+}
+
+export const getUser = (userId: string) => {
+    return (dispatch: Dispatch) => {
+        if (!userId) {
+            userId = "2"
+        }
+        usersAPI.getSingleUser(userId).then(response => {
+            dispatch(setUserProfile(response))
+        })
+
+    }
 }

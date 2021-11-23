@@ -20,8 +20,8 @@ let UsersComponent: React.FC<UsersPropsType> = (props) => {
 
             axios.get<ResponseType>("https://social-network.samuraijs.com/api/1.0/users").then(response => {
                 let a = response.data.items
-                console.log(a)
-                props.setUsers(a)
+
+
             })
         }
     }
