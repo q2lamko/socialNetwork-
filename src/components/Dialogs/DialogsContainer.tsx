@@ -1,9 +1,10 @@
-import {ChangeEvent} from "react";
+import {ChangeEvent, ComponentType} from "react";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {AppStateType} from "../Redux/redux-store";
 import {InitialStateType, newMessageBodyActionCreator, sendMessageBodyActionCreator} from "../Redux/dialogs-reducer";
-import {Dispatch} from "redux";
+import {compose, Dispatch} from "redux";
+import WithAuthRedirect from "../../HOC/withAuthRedirect";
 
 export type DialogDataType = {
     id: number
@@ -16,6 +17,7 @@ export type MessageType = {
 
 type MapStatePropsType = {
     dialogsPage: InitialStateType
+    autorisation: boolean
 }
 type MapDispatchPropsType = {
     onSendMessageClick: () => void,
@@ -25,6 +27,7 @@ type MapDispatchPropsType = {
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         dialogsPage: state.dialogsPage,
+        autorisation: state.auth.autorisation
     }
 }
 let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
@@ -40,5 +43,11 @@ let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
 
 export type DialogsPropsType = MapDispatchPropsType & MapStatePropsType
 
-export const SuperDialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
-export default SuperDialogsContainer;
+export default compose<ComponentType>(
+    connect<MapStatePropsType, MapDispatchPropsType, {}, AppStateType>(mapStateToProps, mapDispatchToProps),
+    WithAuthRedirect
+)(Dialogs)
+
+//
+// export const SuperDialogsContainer = WithAuthRedirect(connect(mapStateToProps, mapDispatchToProps)(Dialogs));
+// export default SuperDialogsContainer;

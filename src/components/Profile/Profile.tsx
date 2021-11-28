@@ -2,8 +2,15 @@ import React from 'react';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPostsContainer from "./myPosts/MyPostsContainer";
 import {ProfilePropsType} from "./ProfileContainer";
+import {UserType} from "../Redux/users-reducer";
 
-const Profile: React.FC<ProfilePropsType> = (props) => {
+
+type profileType = {
+    profile: UserType | null
+    // getUserProfile: (userId:string) => void
+
+}
+const Profile: React.FC<profileType> = (props) => {
     return (
         <div>
             <ProfileInfo profile={props.profile}/>

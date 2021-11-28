@@ -69,7 +69,7 @@ export const newTextChangeActionCreator = (newPost: string) => {
     } as const
 }
 
-export const getUser = (userId: string) => {
+export const getUserProfile = (userId: string) => {
     return (dispatch: Dispatch) => {
         if (!userId) {
             userId = "2"
