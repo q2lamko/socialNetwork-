@@ -32,6 +32,11 @@ export const usersAPI = {
     }
 }
 
+// export const profileAPI
+
+
+
+
 type getAuthResponseType = {
     data: { id: number, login: string, email: string }
     resultCode: number
