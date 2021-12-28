@@ -76,29 +76,7 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
         followInProgress: state.UsersPage.followInProgress
     }
 }
-// let mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
-//     return {
-//         follow: (userId) => {
-//             dispatch(followAC(userId))
-//         },
-//         unfollow: (userId) => {
-//             dispatch(unfollowAC(userId))
-//         },
-//         setUsers: (users: Array<UserType>) => {
-//             dispatch(setUsersAC(users))
-//         },
-//         setCurrentPage: (currentPage) => {
-//             dispatch(setCurrentPageAC(currentPage))
-//         },
-//         setTotalUsersCount: (totalCount: number) => {
-//             dispatch(setTotalUsersCountAC(totalCount))
-//         },
-//         setToggleIsFetching: (isFetching: boolean) => {
-//             dispatch(setToggleIsFetchingAC(isFetching))
-//
-//         }
-//     }
-// }
+
 let DispatchObject: MapDispatchToPropsType = {
     follow,
     unfollow,

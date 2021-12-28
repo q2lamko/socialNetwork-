@@ -1,6 +1,6 @@
 import axios from "axios";
 import {UserType} from "../components/Redux/users-reducer";
-
+import {log} from "util";
 
 type UsersResponseType = {
     error: string
@@ -20,9 +20,11 @@ export const usersAPI = {
         return instance.get<UsersResponseType>(`users?page=${currentPage}&count=${pageSize}`)
             .then(response => response.data);
     },
-    getSingleUser(userId: string) {
+    getProfile(userId: string) {
         return instance.get<UserType>(`profile/` + userId)
             .then(response => response.data)
+
+        // profileAPI.getSingleUser(userId)
     },
     unfollow(userId: number) {
         return instance.delete<getFollowResponseType>(`follow/${userId}`)
@@ -30,6 +32,24 @@ export const usersAPI = {
     follow(userId: number) {
         return instance.post<getFollowResponseType>(`follow/${userId}`)
     }
+}
+
+export const profileAPI = {
+    getStatus(userId: string) {
+        return instance.get<any>(`profile/status/` + userId)
+    },
+    updateStatus(status: string) {
+        return instance.put<updateStatusType>(`profile/status`, {status})
+    }
+}
+
+type getStatus ={
+    data:string
+}
+type updateStatusType = {
+    resultCode: number
+    messages: string
+    data: any
 }
 
 type getAuthResponseType = {

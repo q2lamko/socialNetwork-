@@ -21,7 +21,6 @@ export type UserType = {
     uniqueUrlName: string
     contacts: { facebook: string, vk: string, twitter: string, instagram: string }
     aboutMe: string
-
 }
 export type InitialStateType = typeof initialState;
 //     users: Array<UserType>

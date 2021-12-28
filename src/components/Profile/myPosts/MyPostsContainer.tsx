@@ -3,7 +3,7 @@ import Post from '../Post/Post';
 import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
 import {AppStateType} from "../../Redux/redux-store";
-import {addPostActionCreator, newTextChangeActionCreator} from "../../Redux/profile-reducer";
+import {addPostActionCreator} from "../../Redux/profile-reducer";
 import {Dispatch} from "redux";
 
 
@@ -34,26 +34,22 @@ import {Dispatch} from "redux";
 // }
 
 type MapDispatchToPropsType = {
-    addPost: () => void
-    newTextChangeHandler: (text: string) => void
+    addPost: (newPost:string) => void
 }
 
 const MapStateToProps = (state: AppStateType) => {
     return {
         postDataMap: state.profilePage.PostsData.map(p => (
-            <Post message={p.message} id={p.id} likesCount={p.likesCount}/>)),
+            <Post message={p.message} id={p.id} likesCount={p.likesCount} key={p.id}/>)),
         profilePage: state.profilePage,
     }
 }
 
 const MapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
     return {
-        addPost: () => {
-            dispatch(addPostActionCreator())
+        addPost: (newPost) => {
+            dispatch(addPostActionCreator(newPost))
         },
-        newTextChangeHandler: (text) => {
-            dispatch(newTextChangeActionCreator(text))
-        }
     }
 }
 

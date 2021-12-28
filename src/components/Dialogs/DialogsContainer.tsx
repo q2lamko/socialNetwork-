@@ -1,8 +1,8 @@
-import {ChangeEvent, ComponentType} from "react";
+import React, {ComponentType} from "react";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {AppStateType} from "../Redux/redux-store";
-import {InitialStateType, newMessageBodyActionCreator, sendMessageBodyActionCreator} from "../Redux/dialogs-reducer";
+import {InitialStateType, sendMessageBodyActionCreator} from "../Redux/dialogs-reducer";
 import {compose, Dispatch} from "redux";
 import WithAuthRedirect from "../../HOC/withAuthRedirect";
 
@@ -20,8 +20,7 @@ type MapStatePropsType = {
     autorisation: boolean
 }
 type MapDispatchPropsType = {
-    onSendMessageClick: () => void,
-    onNewMessageChange: (e: ChangeEvent<HTMLTextAreaElement>) => void,
+    onSendMessageClick: (newMessageBody: string) => void,
 }
 
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
@@ -32,12 +31,9 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
 }
 let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
     return {
-        onSendMessageClick: () => {
-            dispatch(sendMessageBodyActionCreator())
+        onSendMessageClick: (newMessageBody) => {
+            dispatch(sendMessageBodyActionCreator(newMessageBody))
         },
-        onNewMessageChange: (e) => {
-            dispatch(newMessageBodyActionCreator(e.target.value))
-        }
     }
 }
 
@@ -48,6 +44,3 @@ export default compose<ComponentType>(
     WithAuthRedirect
 )(Dialogs)
 
-//
-// export const SuperDialogsContainer = WithAuthRedirect(connect(mapStateToProps, mapDispatchToProps)(Dialogs));
-// export default SuperDialogsContainer;
