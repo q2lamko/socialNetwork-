@@ -1,8 +1,13 @@
 import React from 'react';
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {Input} from "../Common/formControls/formControls";
+import {required} from "../../utils/validators";
+import { connect } from 'react-redux';
+import {login} from "../Redux/auth-reducer";
+import {AppStateType} from "../Redux/redux-store";
 
 type FormDataType = {
-    login: string
+    email: string
     password: string
     rememberMe: boolean
 }
@@ -13,13 +18,25 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
             <h1>LoginForm</h1>
             <form onSubmit={props.handleSubmit}>
                 <div>
-                    <Field type="text" placeholder={'login'} component={'input'} name={'login'}/>
+                    <Field
+                        type="text"
+                        placeholder={'Email'}
+                        component={Input} name={'email'}
+                        validate={[required]}/>
                 </div>
                 <div>
-                    <Field type="text" placeholder={'password'} component={'input'} name={'password'}/>
+                    <Field
+                        type="password"
+                        placeholder={'Password'}
+                        component={Input} name={'password'}
+                        validate={[required]}/>
                 </div>
                 <div>
-                    <Field type={"checkbox"} component={'input'} name={'rememberMe'}/> remember me, dude!
+                    <Field
+                        type={"checkbox"}
+                        component={Input}
+                        name={'rememberMe'}
+                    /> remember me, dude!
                 </div>
                 <div>
                     <button>Login</button>
@@ -33,10 +50,9 @@ const LoginReduxForm = reduxForm<FormDataType>({
     form: 'login'
 })(LoginForm)
 
-
-export const Login = () => {
+export const Login = (props:any) => {
     const onSubmit = (formData: FormDataType) => {
-        console.log(formData)
+        props.login({...formData})
     }
     return (
         <div>
@@ -46,4 +62,5 @@ export const Login = () => {
     )
 }
 
-export default Login;
+// export default connect<any, any, {}, AppStateType>(null, {login})(Login);
+export default Login

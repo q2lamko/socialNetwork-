@@ -17,7 +17,7 @@ export type MessageType = {
 
 type MapStatePropsType = {
     dialogsPage: InitialStateType
-    autorisation: boolean
+    isAuth: boolean | null
 }
 type MapDispatchPropsType = {
     onSendMessageClick: (newMessageBody: string) => void,
@@ -26,7 +26,7 @@ type MapDispatchPropsType = {
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         dialogsPage: state.dialogsPage,
-        autorisation: state.auth.autorisation
+        isAuth: state.auth.isAuth
     }
 }
 let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {

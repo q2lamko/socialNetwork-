@@ -65,7 +65,6 @@ export const setUserProfile = (profile: UserType) => {
 }
 
 export const setStatus = (status :string) => {
-    debugger
     return {
         type:SET_STATUS, status
     } as const
