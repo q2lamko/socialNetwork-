@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './formControl.module.css'
+import React from "react";
+import styles from "./formControl.module.css"
 
 
 const FormControl = ({input, meta, Formtype, ...props}: any) => {
@@ -16,11 +16,9 @@ const FormControl = ({input, meta, Formtype, ...props}: any) => {
     )
 }
 
-
 export const Textarea = (props: any) => {
     return <FormControl {...props} Formtype="textarea"></FormControl>
 }
-
 
 export const Input = (props: any) => {
     return <FormControl {...props} Formtype="input"></FormControl>

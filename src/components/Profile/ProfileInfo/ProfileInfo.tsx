@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Preloader from "../../Common/Preloader/Preloader";
 import {UserType} from "../../Redux/users-reducer";
 import ProfileStatus from "../profileStatus/profileStatus";
@@ -22,6 +22,8 @@ const ProfileInfo = (props: ProfileInfoProps) => {
             </div>
             <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
             <div>
+
+                <p>{props.profile.fullName}</p>
                 <p>Страница в ВК: {props.profile.contacts.vk}</p>
                 <p>Страница в Твиттер: {props.profile.contacts.twitter}</p>
                 <p>Страница в инсте: {props.profile.contacts.instagram}</p>

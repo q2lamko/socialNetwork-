@@ -3,12 +3,12 @@ import {usersAPI} from "../../API/API";
 import {Dispatch} from "redux";
 
 const FOLLOW = "FOLLOW"
-const UNFOLLOW = 'UNFOLLLOW'
-const SET_USERS = 'SET_USERS'
-const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
-const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
-const TOGGLE_FOLLOW_IN_PROGRESS = 'TOGGLE_FOLLOW_IN_PROGRESS'
+const UNFOLLOW = "UNFOLLLOW"
+const SET_USERS = "SET_USERS"
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
+const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT"
+const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING"
+const TOGGLE_FOLLOW_IN_PROGRESS = "TOGGLE_FOLLOW_IN_PROGRESS"
 
 export type UserType = {
     id: number
@@ -21,6 +21,7 @@ export type UserType = {
     uniqueUrlName: string
     contacts: { facebook: string, vk: string, twitter: string, instagram: string }
     aboutMe: string
+    fullName: string
 }
 export type InitialStateType = typeof initialState;
 //     users: Array<UserType>

@@ -14,11 +14,11 @@ import {
     unfollowSuccess,
 } from "./users-reducer";
 import {setAuthUserData} from "./auth-reducer";
+import {initializedSuccess} from "./app-reducer";
 
 export type ActionsTypes =
     ReturnType<typeof addPostActionCreator>
     | ReturnType<typeof setUserProfile>
-
     | ReturnType<typeof sendMessageBodyActionCreator>
     | ReturnType<typeof followSuccess>
     | ReturnType<typeof unfollowSuccess>
@@ -29,6 +29,7 @@ export type ActionsTypes =
     | ReturnType<typeof setAuthUserData>
     | ReturnType<typeof setToggleInFollow>
     | ReturnType<typeof setStatus>
+    | ReturnType<typeof initializedSuccess>
 
 
 // let store: StoreType = {

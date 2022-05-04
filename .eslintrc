@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react/jsx-runtime",
+    "react-app",
+    "react-app/jest",
+    "plugin:import/typescript"
+  ],
+  "rules": {
+    "quotes": [
+      "warn",
+      "double"
+    ],
+    "jsx-quotes": [
+      "warn",
+      "prefer-double"
+    ]
+  }
+}

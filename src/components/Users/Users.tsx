@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import styles from "./users.module.css";
 import userAvatar from "../../assets/img/userPhoto.jpg";
-import {NavLink} from 'react-router-dom';
+import {NavLink} from "react-router-dom";
 import {UserType} from "../Redux/users-reducer";
 
 type newUserType = {
@@ -24,20 +24,21 @@ let Users: React.FC<newUserType> = (props) => {
     return <div>
         <div>
             {pages.map(p => {
-                return <span className={props.currentPage === p ? styles.selectedPage : ''}
-                             onClick={() => {
-                                 props.onPageChanged(p)
-                             }}
-                >{p + ' '}</span>
+                return (
+                    <span className={props.currentPage === p ? styles.selectedPage : ""}
+                          onClick={() => {props.onPageChanged(p)}}
+                    >
+                        {p + " "}
+                    </span>)
             })}
         </div>
         {
             props.users.map(u => <div key={u.id}>
                   <span>
                     <div>
-                        <NavLink to={'/profile/' + u.id}>
+                        <NavLink to={"/profile/" + u.id}>
                         <img src={u.photos.small != null ? u.photos.small : userAvatar} className={styles.photo}
-                             alt={''}/>
+                             alt={""}/>
                         </NavLink>
                     </div>
                     <div>

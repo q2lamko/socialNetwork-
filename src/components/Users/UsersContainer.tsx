@@ -10,7 +10,7 @@ import {
 import {AppStateType} from "../Redux/redux-store";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
-import { compose } from "redux";
+import {compose} from "redux";
 
 type MapStateToPropsType = InitialStateType
 
@@ -85,10 +85,7 @@ let DispatchObject: MapDispatchToPropsType = {
     getUsers,
 }
 export type  UsersPropsType = MapDispatchToPropsType & MapStateToPropsType
-// export const UserContainer = connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
-// export const UserContainer = connect(mapStateToProps, DispatchObject)(UsersContainer);
-// export default UserContainer;
 
-export default compose (
+export default compose(
     connect(mapStateToProps, DispatchObject)
 )(UsersContainer)

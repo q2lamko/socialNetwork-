@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validators";
 import {Textarea} from "../../Common/formControls/formControls";
@@ -44,41 +44,9 @@ const MyPostsForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
 const MyPostFormRedux = reduxForm<FormDataType>({form: "profileAddNewPostForm"})(MyPostsForm)
 
-
 type PropsType = {
     addPost: (newPost: string) => void
     postDataMap: JSX.Element[]
 }
-
-
-// const MyPosts: React.FC<PropsType> = (props) => {
-//     const onChangeText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-//         props.newTextChangeHandler(e.currentTarget.value)
-//     }
-//     return (
-//         <div className={classes.PostWrapper}>
-//             <h2>post</h2>
-//             <div>
-//                 <div>
-//                     <textarea className={classes.textarea}
-//                               onChange={onChangeText}
-//                               value={props.profilePage.newPostText}/>
-//                 </div>
-//                 <div>
-//                     <button className={classes.btn}
-//                             onClick={props.addPost}
-//                     >
-//                         Добавить
-//                     </button>
-//                 </div>
-//             </div>
-//             <div className={classes.post_data}>
-//                 {props.postDataMap}
-//             </div>
-//
-//         </div>
-//     )
-// }
-
 
 export default MyPosts;
