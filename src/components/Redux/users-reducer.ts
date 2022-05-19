@@ -129,7 +129,7 @@ export const setToggleInFollow = (isFetching: boolean, userId: number) => {
     } as const
 }
 
-export const getUsers = (currentPage: number, pageSize: number) => {
+export const requestUsers = (currentPage: number, pageSize: number) => {
     return (dispatch: Dispatch) => {
         dispatch(setToggleIsFetching(true));
         dispatch(setCurrentPage(currentPage));
@@ -140,7 +140,6 @@ export const getUsers = (currentPage: number, pageSize: number) => {
         })
     }
 }
-
 export const follow = (userId: number) => {
     return (dispatch: Dispatch) => {
         dispatch(setToggleInFollow(true, userId))

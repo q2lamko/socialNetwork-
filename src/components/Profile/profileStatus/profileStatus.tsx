@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useState} from "react";
 
 type PropsType = {
     status: string
@@ -41,12 +41,12 @@ class ProfileStatus extends React.Component<PropsType, any> {
             <div>
                 {!this.state.editMode &&
                 <div>
-                    <span onDoubleClick={this.activateMode}>{this.props.status || '--------'} </span>
+                    <span onDoubleClick={this.activateMode}>{this.props.status || "--------"} </span>
                 </div>
                 }
                 {this.state.editMode &&
                 <div>
-                    <input onChange={this.onStatusChange} autoFocus onBlur={this.deactivateMode} value={this.state.status}/>
+                    <input onChange={this.onStatusChange} onBlur={this.deactivateMode} value={this.state.status}/>
                 </div>
                 }
             </div>
