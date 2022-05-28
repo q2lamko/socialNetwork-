@@ -1,6 +1,5 @@
 import {
-    addPostActionCreator,
-
+    addPostActionCreator, deletePost,
     setStatus,
     setUserProfile
 } from "./profile-reducer";
@@ -30,6 +29,8 @@ export type ActionsTypes =
     | ReturnType<typeof setToggleInFollow>
     | ReturnType<typeof setStatus>
     | ReturnType<typeof initializedSuccess>
+    | ReturnType<typeof deletePost>
+
 
 
 // let store: StoreType = {

@@ -15,11 +15,11 @@ type FormDataType = {
     rememberMe: boolean
 }
 
-const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
+const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({handleSubmit,error}) => {
     return (
         <div>
             <h1>LoginForm</h1>
-            <form onSubmit={props.handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <Field
                         type="text"
@@ -41,8 +41,8 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                         name={"rememberMe"}
                     /> remember me, dude!
                 </div>
-                {props.error &&<div className={style.formSummaryError}>
-                    {props.error}
+                {error &&<div className={style.formSummaryError}>
+                    {error}
                 </div>}
                 <div>
                     <button>Login</button>
@@ -77,4 +77,4 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => ({
     isAuth: state.auth.isAuth
 })
 export default connect<mapStateToPropsType, any, {}, AppStateType>(mapStateToProps, {login})(Login);
-// export default Login
+

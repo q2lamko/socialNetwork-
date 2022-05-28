@@ -9,7 +9,7 @@ import {maxLengthCreator, required} from "../../utils/validators";
 
 const SecretDialogs: React.FC<DialogsPropsType> = (props) => {
     let state = props.dialogsPage
-    let DialogsDataMap = state.DialogsData.map((d,id) => <DialogItem name={d.name} key={d.id} id={d.id}/>);
+    let DialogsDataMap = state.dialogsData.map((d, id) => <DialogItem name={d.name} key={d.id} id={d.id}/>);
     let MessageDataMap = state.messagesData.map((m,id) => <Message message={m.message} key={m.id} id={m.id}/>);
 
     const addNewMessage = (value: any) => {
@@ -43,7 +43,7 @@ const AddMessageForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
             <div>
                 <Field
                     component={Textarea}
-                    name={'newMessageBody'}
+                    name={"newMessageBody"}
                     placeholder={"enter your message"}
                     validate={[required,maxLength50]}
                 />

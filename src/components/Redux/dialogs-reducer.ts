@@ -8,7 +8,7 @@ let initialState = {
         {id: 2, message: "Privet"},
         {id: 3, message: "Shalom"},
     ],
-    DialogsData: [
+    dialogsData: [
         {id: 1, name: "Maxim"},
         {id: 2, name: "Lena"},
         {id: 3, name: "Stas"},

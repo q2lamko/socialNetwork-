@@ -1,5 +1,5 @@
-import React from 'react';
-import ProfileInfo from './ProfileInfo/ProfileInfo';
+import React from "react";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./myPosts/MyPostsContainer";
 import {UserType} from "../Redux/users-reducer";
 

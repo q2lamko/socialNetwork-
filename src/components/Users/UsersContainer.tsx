@@ -19,16 +19,14 @@ import {
      getUsersSelector
 } from "../Redux/users-selectors";
 
-
-
-
 class UsersContainer extends React.Component<UsersPropsType> {
     state: IState = {
         currentPage: 1,
     }
 
     componentDidMount() {
-        this.props.getUsers(this.props.currentPage, this.props.pageSize)
+        const {currentPage,pageSize} = this.props
+        this.props.getUsers(currentPage, pageSize)
     }
 
     componentDidUpdate(prevProps: UsersPropsType, prevState: IState): void {

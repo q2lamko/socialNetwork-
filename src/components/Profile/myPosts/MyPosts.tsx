@@ -3,14 +3,16 @@ import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validators";
 import {Textarea} from "../../Common/formControls/formControls";
 
-export const MyPosts: React.FC<PropsType> = (props) => {
+export const MyPosts = React.memo((props: PropsType) => {
+
+    console.log("myPosts rendered")
     const addNewPost = (value: any) => {
         props.addPost(value.newPost)
     }
     return (
         <>
             <div>
-                <div >
+                <div>
                     {props.postDataMap}
                 </div>
             </div>
@@ -19,7 +21,7 @@ export const MyPosts: React.FC<PropsType> = (props) => {
             </div>
         </>
     )
-}
+});
 
 type FormDataType = {
     newPost: string

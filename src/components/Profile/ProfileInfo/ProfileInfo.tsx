@@ -1,9 +1,7 @@
 import React from "react";
 import Preloader from "../../Common/Preloader/Preloader";
 import {UserType} from "../../Redux/users-reducer";
-import ProfileStatus from "../profileStatus/profileStatus";
 import ProfileStatusWithHooks from "../profileStatus/profileStatusWithHooks";
-
 
 type ProfileInfoProps = {
     profile: UserType | null
@@ -11,26 +9,26 @@ type ProfileInfoProps = {
     updateStatus:(status:string) => void
 }
 
-const ProfileInfo = (props: ProfileInfoProps) => {
+const ProfileInfo = ({profile, status, updateStatus}:ProfileInfoProps) => {
 
-    if (!props.profile) {
+    if (!profile) {
         return <Preloader/>
     }
     return (
         <div>
             <div>
-                <img src={props.profile.photos.large} alt=""/>
+                <img src={profile.photos.large} alt=""/>
             </div>
-            <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+            <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
             <div>
 
-                <p>{props.profile.fullName}</p>
-                <p>Страница в ВК: {props.profile.contacts.vk}</p>
-                <p>Страница в Твиттер: {props.profile.contacts.twitter}</p>
-                <p>Страница в инсте: {props.profile.contacts.instagram}</p>
+                <p>{profile.fullName}</p>
+                <p>Страница в ВК: {profile.contacts.vk}</p>
+                <p>Страница в Твиттер: {profile.contacts.twitter}</p>
+                <p>Страница в инсте: {profile.contacts.instagram}</p>
             </div>
             <div>
-                <p>Немного обо мне: {props.profile.aboutMe}</p>
+                <p>Немного обо мне: {profile.aboutMe}</p>
             </div>
         </div>
     )
