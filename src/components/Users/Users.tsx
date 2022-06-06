@@ -30,7 +30,8 @@ let Users: React.FC<newUserType> = ({
             currentPage={currentPage}
             onPageChanged={onPageChanged}
             pageSize={pageSize}
-            totalUsersCount={totalUsersCount}
+            totalItemsCount={totalUsersCount}
+            portionSize={10}
         />
         {
             users.map(u => <User user={u} key={u.id} unfollow={unfollow} follow={follow}

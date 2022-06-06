@@ -1,7 +1,7 @@
 import React from "react";
 import Preloader from "../../Common/Preloader/Preloader";
 import {UserType} from "../../Redux/users-reducer";
-import ProfileStatusWithHooks from "../profileStatus/profileStatusWithHooks";
+import ProfileStatusWithHooks from "../ProfileStatus/ProfileStatusWithHooks";
 
 type ProfileInfoProps = {
     profile: UserType | null

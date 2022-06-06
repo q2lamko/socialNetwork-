@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import {Route, withRouter} from "react-router-dom";
+import {BrowserRouter, Route, withRouter} from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
@@ -8,9 +8,9 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginPage from "./components/Login/Login";
 import {compose} from "redux";
-import {connect} from "react-redux";
+import {connect, Provider} from "react-redux";
 import {initializeApp} from "./components/Redux/app-reducer";
-import {AppStateType} from "./components/Redux/redux-store";
+import store, {AppStateType} from "./components/Redux/redux-store";
 import Preloader from "./components/Common/Preloader/Preloader";
 
 class App extends React.Component<AppPropsType> {
@@ -19,7 +19,7 @@ class App extends React.Component<AppPropsType> {
     }
 
     render() {
-        if(!this.props.initialized) {
+        if (!this.props.initialized) {
             return <Preloader/>
         }
 
@@ -56,4 +56,13 @@ type mapDispatchToPropsType = {
 }
 type AppPropsType = mapStateToPropsType & mapDispatchToPropsType
 
-export default compose<React.ComponentType>(withRouter, connect(mapStateToProps, {initializeApp}))(App)
+let ContainerApp = compose<React.ComponentType>(withRouter, connect(mapStateToProps, {initializeApp}))(App)
+
+const SamuraiJSApp = () => {
+    return <BrowserRouter>
+        <Provider store={store}>
+            <ContainerApp/>
+        </Provider>
+    </BrowserRouter>
+}
+export default SamuraiJSApp;
