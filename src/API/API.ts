@@ -20,7 +20,7 @@ export const usersAPI = {
             .then(response => response.data);
     },
     getProfile(userId: number) {
-        return instance.get<UserType>(`profile/${userId}`)
+        return instance.get<any>(`profile/${userId}`)
             .then(response => response.data)
     },
     unfollow(userId: number) {
@@ -37,6 +37,15 @@ export const profileAPI = {
     },
     updateStatus(status: string) {
         return instance.put<updateStatusType>("profile/status", {status})
+    },
+    savePhoto(photoFile: any) {
+        const formData = new FormData();
+        formData.append("image", photoFile)
+        return instance.put<any>("profile/photo", formData, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        })
     }
 }
 

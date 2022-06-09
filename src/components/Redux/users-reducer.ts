@@ -2,6 +2,7 @@ import {ActionsTypes} from "./state";
 import {usersAPI} from "../../API/API";
 import {Dispatch} from "redux";
 import {updateObjectInArray} from "../../utils/object-helper";
+import { PhotosType } from "./profile-reducer";
 
 const FOLLOW = "FOLLOW"
 const UNFOLLOW = "UNFOLLLOW"
@@ -13,25 +14,13 @@ const TOGGLE_FOLLOW_IN_PROGRESS = "TOGGLE_FOLLOW_IN_PROGRESS"
 
 export type UserType = {
     id: number
-    followed: boolean
     name: string
-    photos: { small: string, large: string }
-    large: string
-    small: string
+    photos: PhotosType
     status: string
-    uniqueUrlName: string
-    contacts: { facebook: string, vk: string, twitter: string, instagram: string }
-    aboutMe: string
-    fullName: string
+    followed: boolean
 }
+
 export type InitialStateType = typeof initialState;
-//     users: Array<UserType>
-//     pageSize: number
-//     totalUsersCount: number
-//     currentPage: number
-//     isFetching: boolean
-//     followInProgress: []
-// }
 
 let initialState = {
     users: [] as Array<UserType>,
@@ -48,24 +37,12 @@ export const usersReducer = (state: InitialStateType = initialState, action: Act
             return {
                 ...state,
                 users: updateObjectInArray(state.users, action.userId, "id", {followed: true}),
-                // users: state.users.map(e => {
-                //     if (e.id === action.userId) {
-                //         return {...e, followed: true};
-                //     }
-                //     return e;
-                // })
-            }
+                }
         case UNFOLLOW:
             return {
                 ...state,
                 users: updateObjectInArray(state.users, action.userId, "id", {followed: false}),
-                // users: state.users.map(e => {
-                //     if (e.id === action.userId) {
-                //         return {...e, followed: false};
-                //     }
-                //     return e;
-                // })
-            }
+               }
         case SET_USERS:
             return {
                 ...state, users: action.users

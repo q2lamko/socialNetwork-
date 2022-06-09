@@ -11,8 +11,7 @@ type PropsType = {
 const Header: React.FC<PropsType> = (props) => {
     return (
         <header className={classes.header}>
-            <img className={classes.img} alt=""
-                 src="https://i.pinimg.com/736x/48/3a/6c/483a6c355deffde74c84cb5ca2636ee4--logo-software-security-logo.jpg">{}</img>
+
             <div className={classes.loginBlock}>
                 {props.isAuth
                     ? <div>{props.login} - <button onClick={props.logout}>Logout</button></div>

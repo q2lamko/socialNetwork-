@@ -1,5 +1,4 @@
 import {ActionsTypes} from "./state";
-import {UserType} from "./users-reducer";
 import {Dispatch} from "redux";
 import {profileAPI, usersAPI} from "../../API/API";
 
@@ -7,6 +6,7 @@ const ADD_POST = "ADD-POST"
 const SET_USER_PROFILE = "SET_USER_PROFILE"
 const SET_STATUS = "SET_STATUS"
 const DELETE_POST = "DELETE_POST"
+const SAVE_PHOTO_SUCCESS = "SAVE_PHOTO_SUCCESS"
 
 export type PostType = {
     message: string
@@ -14,23 +14,46 @@ export type PostType = {
     likesCount: number
 }
 export type PostsDataType = Array<PostType>
-export type ProfilePageType = {
-    PostsData: PostsDataType
-    profile: UserType | null
-    status: string
+
+export type PhotosType = {
+    small: string | null
+    large: string | null
 }
-export type InitialStateType = ProfilePageType
-let initialState: InitialStateType = {
+
+export type ContactsType = {
+    github: string
+    vk: string
+    facebook: string
+    instagram: string
+    twitter: string
+    website: string
+    youtube:string
+    mainLink: string
+}
+
+export type ProfileType = {
+    userId: number
+    lookingForAJob: boolean
+    lookingForAJobDescription:string
+    fullName: string
+    contacts: ContactsType
+    photos: PhotosType
+    aboutMe: string
+}
+
+export type InitialStateType = typeof initialState
+
+let initialState = {
     PostsData: [
         {message: "my first post on this page", id: 1, likesCount: 1},
         {message: "my second post on this page", id: 2, likesCount: 3},
         {message: "this is hardcore ", id: 3, likesCount: 3}
-    ],
-    profile: null,
+    ] as PostsDataType,
+    profile: null as ProfileType | null,
     status: "",
 }
 
-export const profileReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
+export const profileReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
         case "ADD-POST":
             return {
@@ -49,6 +72,8 @@ export const profileReducer = (state: InitialStateType = initialState, action: A
             return {...state, profile: action.profile}
         case "SET_STATUS" :
             return {...state, status: action.status}
+        case "SAVE_PHOTO_SUCCESS":
+            return {...state, profile: {...state.profile, photos: action.photos} as ProfileType}
     }
     return state
 }
@@ -58,7 +83,7 @@ export const addPostActionCreator = (newPost: string) => {
         type: ADD_POST, newPost
     } as const
 }
-export const setUserProfile = (profile: UserType) => {
+export const setUserProfile = (profile: ProfileType) => {
     return {
         type: SET_USER_PROFILE, profile
     } as const
@@ -73,9 +98,13 @@ export const deletePost = (postId: number) => {
         type: DELETE_POST, postId
     } as const
 }
+export const savePhotoSuccess = (photos: PhotosType) => {
+    return {
+        type: SAVE_PHOTO_SUCCESS, photos
+    } as const
+}
 
 export const getUserProfile = (userId: number) => async (dispatch: Dispatch) => {
-    // console.log(`мой айди ${userId}`)
     const data = await usersAPI.getProfile(userId);
     dispatch(setUserProfile(data));
 }
@@ -89,6 +118,13 @@ export const updateStatus = (status: string) => async (dispatch: Dispatch) => {
     let response = await profileAPI.updateStatus(status)
     if (response.data.resultCode === 0) {
         dispatch(setStatus(status));
+    }
+}
+
+export const savePhoto = (photos: PhotosType) => async (dispatch: Dispatch) => {
+    let response = await profileAPI.savePhoto(photos)
+    if (response.data.resultCode === 0) {
+        dispatch(savePhotoSuccess(response.data.data.photos));
     }
 }
 

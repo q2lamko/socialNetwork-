@@ -1,5 +1,5 @@
 import {
-    addPostActionCreator, deletePost,
+    addPostActionCreator, deletePost, savePhotoSuccess, savePhoto,
     setStatus,
     setUserProfile
 } from "./profile-reducer";
@@ -30,6 +30,7 @@ export type ActionsTypes =
     | ReturnType<typeof setStatus>
     | ReturnType<typeof initializedSuccess>
     | ReturnType<typeof deletePost>
+    | ReturnType<typeof savePhotoSuccess>
 
 
 

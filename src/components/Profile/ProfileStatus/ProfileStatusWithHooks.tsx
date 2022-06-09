@@ -28,7 +28,7 @@ const ProfileStatusWithHooks: React.FC<PropsType> = (props) => {
         <div>
             {!editMode ?
                 <div>
-                    <span onDoubleClick={activateMode}> {props.status || "--------"} </span>
+                    <b>Статус: </b><span onDoubleClick={activateMode}> {props.status || "--------"} </span>
                 </div>
                 :
                 <div>
@@ -40,35 +40,5 @@ const ProfileStatusWithHooks: React.FC<PropsType> = (props) => {
     )
 }
 
-// const ProfileStatus = React.memo((props: PropsType) => {
-//
-//     const [edit, setEdit] = useState(false);
-//     const [value, setValue] = useState('')
-//
-//     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => setValue(e.currentTarget.value)
-//     const viewModeHandler = () => setEdit(false)
-//
-//
-//     return (
-//         <> {edit ?
-//             <div>
-//                 <input
-//                     onChange={onChangeHandler}
-//                     autoFocus
-//                     value={value}
-//                     onBlur={viewModeHandler}
-//                 />
-//             </div>
-//             :
-//             <div>
-//                 <span onClick={() => setEdit(true)}>{props.status}</span>
-//                 <span onClick={() => setEdit(true)}>{value}</span>
-//             </div>
-//         }
-//
-//         </>
-//
-//     );
-// });
 
 export default ProfileStatusWithHooks;

@@ -1,6 +1,5 @@
-import React from 'react';
+import React from "react";
 import {PostType} from "../../Redux/profile-reducer";
-import cl from './Post.module.css';
 
 
 type PropsType = PostType;
