@@ -1,5 +1,6 @@
 import axios from "axios";
 import {UserType} from "../components/Redux/users-reducer";
+import {PhotosType, ProfileType} from "../components/Redux/profile-reducer";
 
 type UsersResponseType = {
     error: string
@@ -33,10 +34,10 @@ export const usersAPI = {
 
 export const profileAPI = {
     getStatus(userId: number) {
-        return instance.get<any>(`profile/status/${userId}`)
+        return instance.get<string>(`profile/status/${userId}`)
     },
     updateStatus(status: string) {
-        return instance.put<updateStatusType>("profile/status", {status})
+        return instance.put<APIResponseType<SavePhotoResponseDataType>>("profile/status", {status})
     },
     savePhoto(photoFile: any) {
         const formData = new FormData();
@@ -46,16 +47,24 @@ export const profileAPI = {
                 "Content-Type": "multipart/form-data"
             }
         })
+    },
+    saveProfile (profile:ProfileType) {
+        return instance.put<APIResponseType>("profile", profile)
     }
 }
-
-type getStatus = {
-    data: string
+type SavePhotoResponseDataType = {
+    photos: PhotosType
 }
-type updateStatusType = {
-    resultCode: number
-    messages: string
-    data: any
+
+export enum ResultCodesEnum {
+    Success = 0,
+    Error = 1
+}
+
+export type APIResponseType<D = {}, RC = ResultCodesEnum> = {
+    data: D
+    messages: Array<string>
+    resultCode: RC
 }
 
 type getAuthResponseType = {

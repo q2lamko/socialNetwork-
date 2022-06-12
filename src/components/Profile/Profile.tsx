@@ -1,18 +1,19 @@
 import React from "react";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./myPosts/MyPostsContainer";
-import {UserType} from "../Redux/users-reducer";
 import {ProfileType} from "../Redux/profile-reducer";
 
 
-type profileType = {
+type ProfilePropsType = {
     profile: ProfileType | null
-    status:string
-    updateStatus:(status:string) => void
+    status: string
+    updateStatus: (status: string) => void
     isOwner: boolean
     savePhoto: (e: File | undefined) => void
+    saveProfile: (profile: ProfileType) => Promise<any>
 }
-const Profile: React.FC<profileType> = (props) => {
+
+const Profile: React.FC<ProfilePropsType> = (props) => {
 
     return (
         <div>
@@ -22,6 +23,7 @@ const Profile: React.FC<profileType> = (props) => {
                 status={props.status}
                 updateStatus={props.updateStatus}
                 savePhoto={props.savePhoto}
+                saveProfile={props.saveProfile}
             />
             <MyPostsContainer/>
         </div>)

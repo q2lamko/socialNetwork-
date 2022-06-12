@@ -1,5 +1,5 @@
 import {
-    addPostActionCreator, deletePost, savePhotoSuccess, savePhoto,
+    addPostActionCreator, deletePost, savePhotoSuccess,
     setStatus,
     setUserProfile
 } from "./profile-reducer";
@@ -73,47 +73,47 @@ export type ActionsTypes =
 //         return this._state
 //     },
 //
-//     // addPost(postMessage: string) {
-//     //     const newPost: PostType = {
-//     //         id: new Date().getTime(),
-//     //         message: postMessage,
-//     //         likesCount: 0,
-//     //     };
-//     //
-//     //     this._state.ProfilePage.PostsData.push(newPost)
-//     //     this._rerenderEntireTree();
-//     // },
-//     // changeNewText(newPost: string) {
-//     //     this._state.ProfilePage.newPostText = newPost;
-//     //     this._rerenderEntireTree();
-//     // },
+//     addPost(postMessage: string) {
+//         const newPost: PostType = {
+//             id: new Date().getTime(),
+//             message: postMessage,
+//             likesCount: 0,
+//         };
+//
+//         this._state.ProfilePage.PostsData.push(newPost)
+//         this._rerenderEntireTree();
+//     },
+//     changeNewText(newPost: string) {
+//         this._state.ProfilePage.newPostText = newPost;
+//         this._rerenderEntireTree();
+//     },
 //     dispatch(action) {
 //
 //         this._state.ProfilePage = profileReducer(this._state.ProfilePage, action)
 //         this._state.DialogsPage = dialogsReducer(this._state.DialogsPage, action)
 //         this._rerenderEntireTree()
 //
-//         // if (action.type === "ADD-POST") {
-//         //     const newPost: PostType = {
-//         //         id: new Date().getTime(),
-//         //         message: action.postMessage,
-//         //         likesCount: 0,
-//         //     };
-//         //
-//         //     this._state.ProfilePage.PostsData.push(newPost)
-//         //     this._rerenderEntireTree();
-//         // } else if (action.type === "UPDATE-NEW-POST-TEXT") {
-//         //     this._state.ProfilePage.newPostText = action.newPost;
-//         //     this._rerenderEntireTree();
-//         // } else if (action.type === "UPDATE-NEW-MESSAGE-BODY") {
-//         //     this._state.DialogsPage.newMessageBody = action.body
-//         //     this._rerenderEntireTree();
-//         // } else if (action.type === "SEND-MESSAGE") {
-//         //     let body = this._state.DialogsPage.newMessageBody;
-//         //     this._state.DialogsPage.newMessageBody = "";
-//         //     this._state.DialogsPage.messagesData.push({id: 6, message: body})
-//         //     this._rerenderEntireTree()
-//         // }
+//         if (action.type === "ADD-POST") {
+//             const newPost: PostType = {
+//                 id: new Date().getTime(),
+//                 message: action.postMessage,
+//                 likesCount: 0,
+//             };
+//
+//             this._state.ProfilePage.PostsData.push(newPost)
+//             this._rerenderEntireTree();
+//         } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+//             this._state.ProfilePage.newPostText = action.newPost;
+//             this._rerenderEntireTree();
+//         } else if (action.type === "UPDATE-NEW-MESSAGE-BODY") {
+//             this._state.DialogsPage.newMessageBody = action.body
+//             this._rerenderEntireTree();
+//         } else if (action.type === "SEND-MESSAGE") {
+//             let body = this._state.DialogsPage.newMessageBody;
+//             this._state.DialogsPage.newMessageBody = "";
+//             this._state.DialogsPage.messagesData.push({id: 6, message: body})
+//             this._rerenderEntireTree()
+//         }
 //     }
 // }
 
