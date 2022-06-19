@@ -2,6 +2,7 @@ import React from "react";
 import {UserType} from "../Redux/users-reducer";
 import Paginator from "../Common/Paginator/Paginator";
 import User from "./User";
+import styles from "./users.module.css";
 
 type newUserType = {
     onPageChanged: (currentPage: number) => void
@@ -25,7 +26,7 @@ let Users: React.FC<newUserType> = ({
                                         totalUsersCount,
                                         ...props
                                     }) => {
-    return <div>
+    return <div >
         <Paginator
             currentPage={currentPage}
             onPageChanged={onPageChanged}
@@ -33,11 +34,14 @@ let Users: React.FC<newUserType> = ({
             totalItemsCount={totalUsersCount}
             portionSize={10}
         />
-        {
-            users.map(u => <User user={u} key={u.id} unfollow={unfollow} follow={follow}
-                                 followInProgress={followInProgress}/>)
+        <div className={styles.users}>
+            {
+                users.map(u => <User user={u} key={u.id} unfollow={unfollow} follow={follow}
+                                     followInProgress={followInProgress}/>)
 
-        }
+            }
+        </div>
+
     </div>
 }
 

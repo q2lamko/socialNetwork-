@@ -1,4 +1,4 @@
-import {addPostActionCreator, deletePost, InitialStateType, profileReducer} from "./profile-reducer";
+import {actions, InitialStateType, profileReducer} from "./profile-reducer";
 
 let initialState: InitialStateType = {
 
@@ -13,7 +13,7 @@ let initialState: InitialStateType = {
 
 it("length of new state should be incremented", function () {
     //1.test data
-    let action = addPostActionCreator("new post");
+    let action = actions.addPostActionCreator("new post");
 
     //2. action
     let newState = profileReducer(initialState, action);
@@ -23,7 +23,7 @@ it("length of new state should be incremented", function () {
 
 it("message of new post is correct", function () {
     //1.test data
-    let action = addPostActionCreator("new post");
+    let action = actions.addPostActionCreator("new post");
 
     //2. action
     let newState = profileReducer(initialState, action);
@@ -34,7 +34,7 @@ it("message of new post is correct", function () {
 });
 it("length of messages should be decremented", function () {
     //1.test data
-    let action = deletePost(1)
+    let action = actions.deletePost(1)
     //2. action
     let newState = profileReducer(initialState, action);
 
@@ -44,7 +44,7 @@ it("length of messages should be decremented", function () {
 });
 it("length of messages shouldn`t be decremented after delete", function () {
     //1.test data
-    let action = deletePost(1000)
+    let action = actions.deletePost(1000)
     //2. action
     let newState = profileReducer(initialState, action);
 

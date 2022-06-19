@@ -21,7 +21,7 @@ let UsersComponent: React.FC<UsersPropsType> = (props) => {
         }
     }
     return (
-        <div>
+        <div className={styles.users}>
             <button onClick={getUsers}>GET USERS</button>
 
             {

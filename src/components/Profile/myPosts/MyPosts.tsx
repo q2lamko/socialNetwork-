@@ -2,18 +2,33 @@ import React from "react";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validators";
 import {Textarea} from "../../Common/formControls/formControls";
+import {PostType} from "../../Redux/profile-reducer";
+import Post from "../Post/Post";
 
-export const MyPosts = React.memo((props: PropsType) => {
+export type MapPropsType = {
+    posts: Array<PostType>
+}
+export type DispatchPropsType = {
+    addPost: (newPostText: string) => void
+}
+
+export const MyPosts: React.FC<MapPropsType & DispatchPropsType> = React.memo((props) => {
 
     console.log("myPosts rendered")
-    const addNewPost = (value: any) => {
+    let postsElements =
+        [...props.posts]
+            .reverse()
+            .map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>);
+
+    const addNewPost = (value: FormDataType) => {
         props.addPost(value.newPost)
     }
+
     return (
         <>
             <div>
                 <div>
-                    {props.postDataMap}
+                    {postsElements}
                 </div>
             </div>
             <div>
@@ -46,9 +61,6 @@ const MyPostsForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
 const MyPostFormRedux = reduxForm<FormDataType>({form: "profileAddNewPostForm"})(MyPostsForm)
 
-type PropsType = {
-    addPost: (newPost: string) => void
-    postDataMap: JSX.Element[]
-}
+
 
 export default MyPosts;

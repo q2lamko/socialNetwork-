@@ -22,9 +22,8 @@ const ProfileInfo = ({isOwner, profile, status, updateStatus, savePhoto, savePro
         setEditMode(true)
     };
 
-    const onSubmit =  (formData: ProfileType) => {
+    const onSubmit = (formData: ProfileType) => {
         saveProfile(formData).then(
-
             () => {
                 setEditMode(false);
             }
@@ -78,12 +77,6 @@ const ProfileData: React.FC<ProfileDataType> = ({profile, isOwner, goToEditMode}
             <button onClick={goToEditMode}>Редактировать</button>
         </div>}
         <div>
-            <b>Полное имя: {profile.fullName}</b>
-            <p>Страница в ВК: {profile.contacts.vk}</p>
-            <p>Страница в Твиттер: {profile.contacts.twitter}</p>
-            <p>Страница в инсте: {profile.contacts.instagram}</p>
-        </div>
-        <div>
             <div>
                 <b>В поиске работы: {profile.lookingForAJob ? "yes" : "no"}</b>
             </div>
@@ -97,9 +90,9 @@ const ProfileData: React.FC<ProfileDataType> = ({profile, isOwner, goToEditMode}
                 )}
             </div>
             {profile.lookingForAJob &&
-            <div>
-                <b>Мои навыки: {profile.lookingForAJobDescription}</b>
-            </div>
+                <div>
+                    <b>Мои навыки: {profile.lookingForAJobDescription}</b>
+                </div>
             }
         </div>
     </div>

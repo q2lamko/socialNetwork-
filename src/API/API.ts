@@ -25,10 +25,10 @@ export const usersAPI = {
             .then(response => response.data)
     },
     unfollow(userId: number) {
-        return instance.delete<getFollowResponseType>(`follow/${userId}`)
+        return instance.delete(`follow/${userId}`).then(res => res.data) as Promise<APIResponseType>
     },
     follow(userId: number) {
-        return instance.post<getFollowResponseType>(`follow/${userId}`)
+        return instance.post<APIResponseType>(`follow/${userId}`).then(res => res.data)
     }
 }
 
@@ -51,7 +51,10 @@ export const profileAPI = {
     saveProfile (profile:ProfileType) {
         return instance.put<APIResponseType>("profile", profile)
     }
-}
+};
+
+
+
 type SavePhotoResponseDataType = {
     photos: PhotosType
 }
@@ -77,16 +80,23 @@ export const authAPI = {
     me() {
         return instance.get<getAuthResponseType>("auth/me")
     },
-    login(email: string, password: string, rememberMe = false) {
+    login(email: string, password: string, rememberMe = false, captcha: null | string = null) {
         return instance.post<getAuthResponseType>("auth/login", {
             email,
             password,
-            rememberMe
+            rememberMe,
+            captcha,
         })
     },
     logout() {
         return instance.delete<getAuthResponseType>("auth/login").then(response => response.data)
     }
+}
+export const securityAPI = {
+    getCaptchaUrl() {
+        return instance.get<any>("security/get-captcha-url")
+    },
+
 }
 
 type getFollowResponseType = {

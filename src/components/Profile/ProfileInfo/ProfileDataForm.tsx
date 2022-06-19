@@ -1,9 +1,9 @@
-import React from 'react';
-import s from './../ProfileInfo/ProfileInfor.module.css'
+import React from "react";
+import s from "./../ProfileInfo/ProfileInfo.module.css"
 import {ProfileType} from "../../Redux/profile-reducer";
 import {createField, GetStringKeys, Input, Textarea} from "../../Common/formControls/formControls";
 import { InjectedFormProps, reduxForm} from "redux-form";
-import style from "../../common/FormsControls/FormsControls.module.css";
+import style from "./../../Common/formControls/formControl.module.css";
 
 type PropsType = {
     profile: ProfileType
@@ -49,6 +49,6 @@ export const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, PropsType>
 };
 
 const ProfileDataFormReduxForm = reduxForm<ProfileType, PropsType>(
-    {form: 'edit-profile',enableReinitialize: true, destroyOnUnmount: false })(ProfileDataForm)
+    {form: "edit-profile",enableReinitialize: true, destroyOnUnmount: false })(ProfileDataForm)
 
 export default ProfileDataFormReduxForm;

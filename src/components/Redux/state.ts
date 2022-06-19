@@ -1,36 +1,34 @@
-import {
-    addPostActionCreator, deletePost, savePhotoSuccess,
-    setStatus,
-    setUserProfile
-} from "./profile-reducer";
-import {sendMessageBodyActionCreator} from "./dialogs-reducer";
-import {
-    followSuccess,
-    setCurrentPage, setToggleInFollow,
-    setToggleIsFetching,
-    setTotalUsersCount,
-    setUsers,
-    unfollowSuccess,
-} from "./users-reducer";
-import {setAuthUserData} from "./auth-reducer";
-import {initializedSuccess} from "./app-reducer";
-
-export type ActionsTypes =
-    ReturnType<typeof addPostActionCreator>
-    | ReturnType<typeof setUserProfile>
-    | ReturnType<typeof sendMessageBodyActionCreator>
-    | ReturnType<typeof followSuccess>
-    | ReturnType<typeof unfollowSuccess>
-    | ReturnType<typeof setUsers>
-    | ReturnType<typeof setCurrentPage>
-    | ReturnType<typeof setTotalUsersCount>
-    | ReturnType<typeof setToggleIsFetching>
-    | ReturnType<typeof setAuthUserData>
-    | ReturnType<typeof setToggleInFollow>
-    | ReturnType<typeof setStatus>
-    | ReturnType<typeof initializedSuccess>
-    | ReturnType<typeof deletePost>
-    | ReturnType<typeof savePhotoSuccess>
+// import {actions} from "./profile-reducer";
+// import {actions} from "./auth-reducer";
+// import {sendMessageBodyActionCreator} from "./dialogs-reducer";
+// import {
+//     followSuccess,
+//     setCurrentPage, setToggleInFollow,
+//     setToggleIsFetching,
+//     setTotalUsersCount,
+//     setUsers,
+//     unfollowSuccess,
+// } from "./users-reducer";
+//
+// import {initializedSuccess} from "./app-reducer";
+//
+// export type ActionsTypes =
+//     ReturnType<typeof actions.addPostActionCreator>
+//     | ReturnType<typeof actions.setUserProfile>
+//     | ReturnType<typeof sendMessageBodyActionCreator>
+//     | ReturnType<typeof followSuccess>
+//     | ReturnType<typeof unfollowSuccess>
+//     | ReturnType<typeof setUsers>
+//     | ReturnType<typeof setCurrentPage>
+//     | ReturnType<typeof setTotalUsersCount>
+//     | ReturnType<typeof setToggleIsFetching>
+//     | ReturnType<typeof actions.setAuthUserData>
+//     | ReturnType<typeof setToggleInFollow>
+//     | ReturnType<typeof actions.setStatus>
+//     | ReturnType<typeof initializedSuccess>
+//     | ReturnType<typeof actions.deletePost>
+//     | ReturnType<typeof actions.savePhotoSuccess>
+//     | ReturnType<typeof actions.getCaptchaUrlSuccess>
 
 
 

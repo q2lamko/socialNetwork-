@@ -2,7 +2,7 @@ import React, {ComponentType} from "react";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {AppStateType} from "../Redux/redux-store";
-import {InitialStateType, sendMessageBodyActionCreator} from "../Redux/dialogs-reducer";
+import {actions, InitialStateType} from "../Redux/dialogs-reducer";
 import {compose, Dispatch} from "redux";
 import WithAuthRedirect from "../../HOC/withAuthRedirect";
 
@@ -32,7 +32,7 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
 let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
     return {
         onSendMessageClick: (newMessageBody) => {
-            dispatch(sendMessageBodyActionCreator(newMessageBody))
+            dispatch(actions.sendMessageBodyActionCreator(newMessageBody))
         },
     }
 }

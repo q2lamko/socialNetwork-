@@ -2,7 +2,10 @@ import React from "react";
 import {PostType} from "../../Redux/profile-reducer";
 
 
-type PropsType = PostType;
+type PropsType = {
+    message: string
+    likesCount: number
+};
 
 const Post: React.FC<PropsType> = (props) => {
 

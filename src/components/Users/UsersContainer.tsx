@@ -4,8 +4,8 @@ import {
     requestUsers,
     follow, unfollow,
     InitialStateType,
-    setCurrentPage,
-    setToggleInFollow,
+    // setCurrentPage,
+    // setToggleInFollow,
 } from "../Redux/users-reducer";
 import {AppStateType} from "../Redux/redux-store";
 import Users from "./Users";
@@ -73,8 +73,8 @@ let mapStateToProps = (state: AppStateType) => {
 export type MapDispatchToPropsType = {
     follow: (userId: number) => void
     unfollow: (userId: number) => void
-    setCurrentPage: (currentPage: number) => void
-    setToggleInFollow: (isFetching: boolean, userId: number) => void
+    // setCurrentPage: (currentPage: number) => void
+    // setToggleInFollow: (isFetching: boolean, userId: number) => void
     getUsers: (currentPage: number, pageSize: number) => void
 }
 type MapStateToPropsType = InitialStateType
@@ -85,8 +85,8 @@ interface IState {
 let DispatchObject: MapDispatchToPropsType = {
     follow,
     unfollow,
-    setCurrentPage,
-    setToggleInFollow,
+    // setCurrentPage,
+    // setToggleInFollow,
     getUsers: requestUsers,
 }
 export type  UsersPropsType = MapDispatchToPropsType & MapStateToPropsType
